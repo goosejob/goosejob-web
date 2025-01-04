@@ -1,17 +1,17 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { Welcome } from "../components/shared/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Goosejob" },
+    { name: "description", content: "Good jobs and career search" },
   ];
 }
 
 export function loader({ context }: Route.LoaderArgs) {
-  return { message: context.VALUE_FROM_CLOUDFLARE };
+  return { message: context.VALUE_FROM_SERVER };
 }
 
-export default function Home({ loaderData }: Route.ComponentProps) {
+export default function HomeRoute({ loaderData }: Route.ComponentProps) {
   return <Welcome message={loaderData.message} />;
 }
