@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function DashboardRoute() {
+export default function Route() {
   return (
     <div className="grid auto-rows-min gap-4 md:grid-cols-2">
       <div className="aspect-video rounded-xl bg-muted" />

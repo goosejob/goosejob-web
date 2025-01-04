@@ -31,16 +31,17 @@ export function NavLinks({
   }[];
 }) {
   return (
-    <SidebarGroup>
+    <SidebarGroup className="py-0">
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton asChild>
+          <SidebarMenuButton asChild tooltip="Dashboard">
             <Link to="/" className="flex gap-2">
               <Gauge />
               <span className="font-medium">Dashboard</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
+
         {groups.map((group) => (
           <Collapsible
             key={group.title}

@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  Binoculars,
   Box,
   BriefcaseBusiness,
   Building,
@@ -44,17 +45,30 @@ const data = {
       items: [
         { title: "List", to: "/jobs" },
         { title: "Saved", to: "/jobs/saved" },
-        { title: "Created", to: "/jobs/created" },
+        { title: "Applied", to: "/jobs/applied" },
+        { title: "In Progress", to: "/jobs/progress" },
+        { title: "Canceled", to: "/jobs/canceled" },
       ],
     },
     {
-      title: "Companies",
-      to: "/companies",
+      title: "Organizations",
+      to: "#",
       icon: Building,
-      isActive: true,
+      isActive: false,
       items: [
-        { title: "List", to: "/companies" },
-        { title: "Saved", to: "/companies/saved" },
+        { title: "List", to: "/organizations" },
+        { title: "Saved", to: "/organizations/saved" },
+      ],
+    },
+    {
+      title: "Recruit",
+      to: "#",
+      icon: Binoculars,
+      isActive: false,
+      items: [
+        { title: "Organizations", to: "/organizations/managed" },
+        { title: "Jobs", to: "/jobs/managed" },
+        { title: "Archived", to: "/jobs/archived" },
       ],
     },
   ],
@@ -63,7 +77,7 @@ const data = {
       title: "Types",
       url: "#",
       icon: Box,
-      isActive: true,
+      isActive: false,
       items: [
         { title: "Full-Time", slug: "full-time" },
         { title: "Part-Time", slug: "part-time" },
@@ -77,7 +91,7 @@ const data = {
       title: "Arrangements",
       url: "#",
       icon: Locate,
-      isActive: true,
+      isActive: false,
       items: [
         { title: "Remote", slug: "remote" },
         { title: "Hybrid", slug: "hybrid" },

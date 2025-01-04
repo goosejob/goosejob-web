@@ -16,7 +16,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-export default function MainLayoutRoute() {
+export default function Route() {
   return (
     <SidebarProvider>
       <SidebarContainer />
