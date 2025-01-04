@@ -9,6 +9,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
+  console.log("VALUE_FROM_SERVER", context.VALUE_FROM_SERVER);
+
   return { message: context.VALUE_FROM_SERVER };
 }
 
