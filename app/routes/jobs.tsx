@@ -2,15 +2,18 @@ import type { Route } from "./+types/jobs";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Jobs - Goosejob" },
-    { name: "description", content: "List of all jobs" },
+    { title: "Jobs List - Goosejob" },
+    {
+      name: "description",
+      content: "List of all posted jobs, available and others",
+    },
   ];
 }
 
 export default function JobsRoute() {
   return (
-    <div>
+    <>
       <h1>Jobs List</h1>
-    </div>
+    </>
   );
 }

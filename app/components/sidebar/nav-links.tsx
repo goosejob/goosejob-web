@@ -1,4 +1,5 @@
-import { ChevronRight, type LucideIcon } from "lucide-react";
+import { Link } from "react-router";
+import { ChevronRight, Gauge, type LucideIcon } from "lucide-react";
 
 import {
   Collapsible,
@@ -14,7 +15,6 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
 
 export function NavLinks({
   groups,
@@ -33,6 +33,14 @@ export function NavLinks({
   return (
     <SidebarGroup>
       <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton asChild>
+            <Link to="/" className="flex gap-2">
+              <Gauge />
+              <span className="font-medium">Dashboard</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
         {groups.map((group) => (
           <Collapsible
             key={group.title}
