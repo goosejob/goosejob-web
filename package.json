@@ -1,4 +1,5 @@
 {
+  "name": "goosejob-web",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,12 +10,18 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
     "@react-router/node": "^7.1.1",
     "@react-router/serve": "^7.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "isbot": "^5.1.19",
+    "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.1"
+    "react-router": "^7.1.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241230.0",
