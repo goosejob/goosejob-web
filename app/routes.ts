@@ -19,4 +19,6 @@ export default [
     route("organizations", "routes/organizations/list.tsx"),
     route("organizations/new", "routes/organizations/new.tsx"),
   ]),
+
+  route("editor", "routes/editor/demo.tsx"),
 ] satisfies RouteConfig;

@@ -6,6 +6,8 @@ html,
 body {
   @apply bg-white dark:bg-gray-950;
 
+  @apply selection:bg-amber-200 selection:text-amber-950;
+
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
@@ -89,5 +91,54 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/*
+ * Custom utilities
+ */
+@layer utilities {
+  .p-layout {
+    @apply px-2 sm:px-4;
+  }
+  .flex-center {
+    @apply p-layout flex items-center justify-center;
+  }
+  .text-p {
+    @apply text-base sm:text-lg;
+  }
+  .hover-opacity {
+    @apply transition hover:opacity-70;
+  }
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  .prose-config {
+    @apply prose prose-sm prose-slate dark:prose-invert sm:prose-base focus:outline-none;
+    @apply prose-img:mb-0 prose-img:mt-3;
+    @apply prose-a:prose-a-styles;
+    @apply prose-pre:prose-pre-styles;
+    @apply prose-code:prose-code-styles;
+    @apply prose-ul:prose-ul-styles;
+    @apply prose-ol:prose-ol-styles;
+  }
+  .prose-config .tiptap {
+    @apply outline-none;
+  }
+  .prose-a-styles {
+    @apply focus-ring cursor-pointer rounded decoration-muted transition;
+    @apply text-accent-foreground hover:opacity-75;
+  }
+  .prose-pre-styles {
+    @apply bg-muted text-foreground;
+  }
+  .prose-code-styles {
+    @apply before:content-none after:content-none;
+  }
+  .prose-ul-styles p {
+    @apply my-1;
+  }
+  .prose-ol-styles p {
+    @apply my-1;
   }
 }
