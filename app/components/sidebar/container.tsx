@@ -22,9 +22,10 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavFilters } from "@/components/sidebar/nav-filters";
+import { SidebarSearchForm } from "@/components/sidebar/search-form";
 
 // This is sample data.
-const data = {
+const sampleData = {
   user: {
     name: "Example User",
     email: "example@example.com",
@@ -107,16 +108,17 @@ export function SidebarContainer({
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <OrganizationSwitcher organizations={data.organizations} />
+        <OrganizationSwitcher organizations={sampleData.organizations} />
+        <SidebarSearchForm />
       </SidebarHeader>
 
       <SidebarContent>
-        <NavLinks groups={data.links} />
-        <NavFilters groups={data.filters} />
+        <NavLinks groups={sampleData.links} />
+        <NavFilters groups={sampleData.filters} />
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={sampleData.user} />
       </SidebarFooter>
 
       <SidebarRail />
