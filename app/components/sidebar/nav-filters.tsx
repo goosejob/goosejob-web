@@ -17,8 +17,10 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 
 export function NavFilters({
+  label,
   groups,
 }: {
+  label: string;
   groups: {
     title: string;
     url: string;
@@ -32,7 +34,7 @@ export function NavFilters({
 }) {
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Filters</SidebarGroupLabel>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
       <SidebarMenu>
         {groups.map((group) => (
           <Collapsible

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
+  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -17,8 +18,10 @@ import {
 } from "@/components/ui/sidebar";
 
 export function NavLinks({
+  label,
   groups,
 }: {
+  label: string;
   groups: {
     title: string;
     to: string;
@@ -31,7 +34,8 @@ export function NavLinks({
   }[];
 }) {
   return (
-    <SidebarGroup className="py-0">
+    <SidebarGroup>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton asChild tooltip="Dashboard">

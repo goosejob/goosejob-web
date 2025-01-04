@@ -37,7 +37,7 @@ const sampleData = {
     { name: "Catamyst", plan: "Startup", logo: Cat },
     { name: "Dogokit", plan: "Free", logo: Dog },
   ],
-  links: [
+  seeker: [
     {
       title: "Jobs",
       to: "/jobs",
@@ -53,7 +53,7 @@ const sampleData = {
     },
     {
       title: "Organizations",
-      to: "#",
+      to: "/organizations",
       icon: Building,
       isActive: false,
       items: [
@@ -61,15 +61,26 @@ const sampleData = {
         { title: "Saved", to: "/organizations/saved" },
       ],
     },
+  ],
+  recruiter: [
     {
-      title: "Recruit",
-      to: "#",
-      icon: Binoculars,
+      title: "Jobs",
+      to: "/jobs",
+      icon: BriefcaseBusiness,
       isActive: false,
       items: [
-        { title: "Organizations", to: "/organizations/managed" },
-        { title: "Jobs", to: "/jobs/managed" },
+        { title: "Managed", to: "/jobs/Managed" },
         { title: "Archived", to: "/jobs/archived" },
+      ],
+    },
+    {
+      title: "Organizations",
+      to: "/organizations",
+      icon: Building,
+      isActive: false,
+      items: [
+        { title: "Managed", to: "/organizations/managed" },
+        { title: "Archived", to: "/organizations/archived" },
       ],
     },
   ],
@@ -115,8 +126,9 @@ export function SidebarContainer({
       </SidebarHeader>
 
       <SidebarContent>
-        <NavLinks groups={sampleData.links} />
-        <NavFilters groups={sampleData.filters} />
+        <NavLinks label="Job Seeker" groups={sampleData.seeker} />
+        <NavLinks label="Recruiter" groups={sampleData.recruiter} />
+        <NavFilters label="Filters" groups={sampleData.filters} />
       </SidebarContent>
 
       <SidebarFooter>
