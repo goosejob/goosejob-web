@@ -26,17 +26,19 @@ export default function Route() {
         <header className="flex items-center justify-between sticky top-0 bg-background h-16 shrink-0 border-b px-4">
           <div className="flex items-center gap-2">
             <SidebarTrigger className="-ml-1" />
+
             <Separator orientation="vertical" className="mr-2 h-4" />
+
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink asChild>
-                    <Link to="/">Dashboard</Link>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild className="font-bold">
+                    <Link to="/">🪿 Goosejob</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Dashboard Item</BreadcrumbPage>
+                  <BreadcrumbPage>Page</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
