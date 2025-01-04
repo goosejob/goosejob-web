@@ -1,48 +1,40 @@
-# Welcome to React Router!
+# Goosejob Web
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Good job and career search platform.
+
+Access at <https://goosejob.com>
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Find tech jobs and companies
+- Post job listings
+- See salary range
 
-## Getting Started
-
-### Installation
+## Development
 
 Install the dependencies:
 
-```bash
+```sh
 bun install
 ```
 
-### Development
+Start the development server:
 
-Start the development server with HMR:
-
-```bash
+```sh
 bun run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-bun run build
-```
+Open at `http://localhost:5173`.
 
 ## Deployment
 
-Deployment is done using the Wrangler CLI.
+Create a production build:
+
+```sh
+bun run build
+```
+
+Deployment is done using the Cloudflare Wrangler CLI.
 
 To deploy directly to production:
 
@@ -56,16 +48,8 @@ To deploy a preview URL:
 bunx wrangler versions upload
 ```
 
-You can then promote a version to production after verification or roll it out progressively.
+Promote a version to production after verification or roll it out progressively.
 
 ```sh
 bunx wrangler versions deploy
 ```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
