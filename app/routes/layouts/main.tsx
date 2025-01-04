@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Link, Outlet } from "react-router";
 
 const navItems = [
@@ -17,6 +18,11 @@ export default function MainLayoutRoute() {
               <Link to={navItem.to}>{navItem.text}</Link>
             </li>
           ))}
+          <li>
+            <Button asChild size="sm">
+              <Link to="/new">New Job</Link>
+            </Button>
+          </li>
         </ul>
       </nav>
 
@@ -25,7 +31,7 @@ export default function MainLayoutRoute() {
       </main>
 
       <footer>
-        <p>© {year} Goosejob</p>
+        <p className="text-xs">© {year} 🪿 Goosejob</p>
       </footer>
     </div>
   );
