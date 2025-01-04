@@ -1,13 +1,13 @@
 import * as React from "react";
 import {
-  AudioWaveform,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
+  Box,
+  BriefcaseBusiness,
+  Building,
+  Cat,
+  Dog,
+  Locate,
+  PawPrint,
+  Rabbit,
 } from "lucide-react";
 
 import { NavLinks } from "@/components/sidebar/nav-links";
@@ -17,9 +17,7 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
   SidebarHeader,
-  SidebarMenu,
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavFilters } from "@/components/sidebar/nav-filters";
@@ -32,28 +30,39 @@ const data = {
     avatar: "https://api.dicebear.com/9.x/initials/svg?seed=ExampleUser",
   },
   organizations: [
-    { name: "Goosejob", plan: "Enterprise", logo: GalleryVerticalEnd },
-    { name: "Bearmentor", plan: "Free", logo: AudioWaveform },
-    { name: "Catamyst", plan: "Startup", logo: Command },
+    { name: "Goosejob", plan: "Enterprise", logo: Rabbit },
+    { name: "Bearmentor", plan: "Startup", logo: PawPrint },
+    { name: "Catamyst", plan: "Startup", logo: Cat },
+    { name: "Dogokit", plan: "Free", logo: Dog },
   ],
   links: [
     {
       title: "Jobs",
-      url: "#",
-      icon: SquareTerminal,
+      to: "/jobs",
+      icon: BriefcaseBusiness,
       isActive: true,
       items: [
-        { title: "List", url: "#" },
-        { title: "Saved", url: "#" },
-        { title: "Created", url: "#" },
+        { title: "List", to: "/jobs" },
+        { title: "Saved", to: "/jobs/saved" },
+        { title: "Created", to: "/jobs/created" },
+      ],
+    },
+    {
+      title: "Companies",
+      to: "/companies",
+      icon: Building,
+      isActive: true,
+      items: [
+        { title: "List", to: "/companies" },
+        { title: "Saved", to: "/companies/saved" },
       ],
     },
   ],
   filters: [
     {
-      title: "Job Types",
+      title: "Types",
       url: "#",
-      icon: Settings2,
+      icon: Box,
       isActive: true,
       items: [
         { title: "Full-Time", slug: "full-time" },
@@ -65,9 +74,9 @@ const data = {
       ],
     },
     {
-      title: "Work Locations",
+      title: "Arrangements",
       url: "#",
-      icon: Settings2,
+      icon: Locate,
       isActive: true,
       items: [
         { title: "Remote", slug: "remote" },
@@ -88,12 +97,8 @@ export function SidebarContainer({
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            <NavLinks groups={data.links} />
-            <NavFilters groups={data.filters} />
-          </SidebarMenu>
-        </SidebarGroup>
+        <NavLinks groups={data.links} />
+        <NavFilters groups={data.filters} />
       </SidebarContent>
 
       <SidebarFooter>

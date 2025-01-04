@@ -6,12 +6,15 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import {
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export function NavFilters({
   groups,
@@ -28,43 +31,46 @@ export function NavFilters({
   }[];
 }) {
   return (
-    <>
-      {groups.map((group) => (
-        <Collapsible
-          key={group.title}
-          asChild
-          defaultOpen={group.isActive}
-          className="group/collapsible"
-        >
-          <SidebarMenuItem>
-            <CollapsibleTrigger asChild>
-              <SidebarMenuButton tooltip={group.title}>
-                {group.icon && <group.icon />}
-                <span>{group.title}</span>
-                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-              </SidebarMenuButton>
-            </CollapsibleTrigger>
+    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+      <SidebarGroupLabel>Filters</SidebarGroupLabel>
+      <SidebarMenu>
+        {groups.map((group) => (
+          <Collapsible
+            key={group.title}
+            asChild
+            defaultOpen={group.isActive}
+            className="group/collapsible"
+          >
+            <SidebarMenuItem>
+              <CollapsibleTrigger asChild>
+                <SidebarMenuButton tooltip={group.title}>
+                  {group.icon && <group.icon />}
+                  <span className="font-medium">{group.title}</span>
+                  <ChevronRight className="ml-auto transition-transform duration-100 group-data-[state=open]/collapsible:rotate-90" />
+                </SidebarMenuButton>
+              </CollapsibleTrigger>
 
-            <CollapsibleContent className="py-1">
-              <SidebarMenuSub className="space-y-1">
-                {group.items?.map((subItem) => (
-                  <SidebarMenuSubItem key={subItem.slug}>
-                    <div className="flex items-center space-x-2 px-2">
-                      <Checkbox id={subItem.slug} />
-                      <label
-                        htmlFor={subItem.slug}
-                        className="cursor-pointer text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        {subItem.title}
-                      </label>
-                    </div>
-                  </SidebarMenuSubItem>
-                ))}
-              </SidebarMenuSub>
-            </CollapsibleContent>
-          </SidebarMenuItem>
-        </Collapsible>
-      ))}
-    </>
+              <CollapsibleContent>
+                <SidebarMenuSub className="space-y-1 py-1">
+                  {group.items?.map((item) => (
+                    <SidebarMenuSubItem key={item.slug}>
+                      <div className="flex items-center space-x-2 px-2">
+                        <Checkbox id={item.slug} />
+                        <label
+                          htmlFor={item.slug}
+                          className="cursor-pointer text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          {item.title}
+                        </label>
+                      </div>
+                    </SidebarMenuSubItem>
+                  ))}
+                </SidebarMenuSub>
+              </CollapsibleContent>
+            </SidebarMenuItem>
+          </Collapsible>
+        ))}
+      </SidebarMenu>
+    </SidebarGroup>
   );
 }

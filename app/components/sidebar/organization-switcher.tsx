@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ChevronsUpDown, Plus } from "lucide-react";
+import { Link } from "react-router";
 
 import {
   DropdownMenu,
@@ -16,7 +17,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
 
 export function OrganizationSwitcher({
   organizations,
