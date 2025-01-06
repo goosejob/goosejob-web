@@ -2,8 +2,8 @@ import type { Route } from "./+types/dashboard";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Goosejob" },
-    { name: "description", content: "Good jobs and career search" },
+    { title: "Dashboard - Goosejob" },
+    { name: "description", content: "Good jobs and career search." },
   ];
 }
 

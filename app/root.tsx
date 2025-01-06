@@ -24,7 +24,60 @@ export const links: Route.LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
   { rel: "stylesheet", href: stylesheet },
+  {
+    rel: "shortcut icon",
+    href: "/favicon.ico",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    href: "/favicons/favicon-96x96.png",
+    sizes: "96x96",
+  },
+  {
+    rel: "icon",
+    type: "image/svg+xml",
+    href: "/favicons/favicon.svg",
+  },
+  {
+    rel: "apple-touch-icon",
+    sizes: "180x180",
+    href: "/favicons/apple-touch-icon.png",
+  },
+  {
+    rel: "manifest",
+    href: "/favicons/site.webmanifest",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "96x96",
+    href: "/favicons/favicon-96x96.png",
+  },
+  {
+    rel: "apple-touch-icon",
+    sizes: "180x180",
+    href: "/favicons/apple-touch-icon.png",
+  },
+  {
+    rel: "mask-icon",
+    href: "/favicons/safari-pinned-tab.svg",
+    color: "#60a5fa",
+  },
+  {
+    rel: "manifest",
+    href: "/site.webmanifest",
+  },
 ];
+
+export function meta() {
+  return [
+    { title: "Goosejob" },
+    { name: "description", content: "Good job and career search." },
+    { property: "og:title", content: "Goosejob" },
+    { name: "apple-mobile-web-app-title", content: "Goosejob" },
+  ];
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
