@@ -29,7 +29,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Route() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-8">
       <div className="w-full max-w-xl space-y-4">
         <CreateNewJobForm />
       </div>
@@ -274,7 +274,11 @@ export function CreateNewJobForm() {
           )}
         />
 
-        <Button type="submit">Save</Button>
+        <div className="flex">
+          <Button type="submit" className="flex-[1]">
+            Save Job
+          </Button>
+        </div>
       </form>
     </Form>
   );

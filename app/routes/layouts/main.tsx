@@ -32,7 +32,7 @@ export default function Route() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink asChild className="font-bold">
+                  <BreadcrumbLink asChild>
                     <Link to="/">🪿 Goosejob</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
@@ -47,7 +47,7 @@ export default function Route() {
           <CreateNewDropdown />
         </header>
 
-        <main className="p-4">
+        <main className="p-8">
           <Outlet />
         </main>
       </SidebarInset>
