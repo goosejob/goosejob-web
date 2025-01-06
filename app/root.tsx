@@ -7,8 +7,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { NuqsAdapter } from "nuqs/adapters/react-router/v7";
 
 import type { Route } from "./+types/root";
+
 import stylesheet from "@/tailwind.css?url";
 import { sidebarState, getSidebarCookie } from "@/cookies.server";
 
@@ -126,7 +128,11 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <NuqsAdapter>
+      <Outlet />
+    </NuqsAdapter>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

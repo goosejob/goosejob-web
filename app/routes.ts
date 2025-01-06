@@ -18,6 +18,8 @@ export default [
 
     route("organizations", "routes/organizations/list.tsx"),
     route("organizations/new", "routes/organizations/new.tsx"),
+
+    route("search", "routes/search/result.tsx"),
   ]),
 
   route("editor", "routes/editor/demo.tsx"),

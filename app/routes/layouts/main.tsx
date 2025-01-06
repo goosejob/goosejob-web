@@ -16,6 +16,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { CreateNewDropdown } from "@/components/sidebar/create-new-dropdown";
+import { SearchForm } from "@/components/shared/search-form";
 
 export default function Route() {
   return (
@@ -44,7 +45,10 @@ export default function Route() {
             </Breadcrumb>
           </div>
 
-          <CreateNewDropdown />
+          <div className="flex items-center gap-2">
+            <SearchForm />
+            <CreateNewDropdown />
+          </div>
         </header>
 
         <main className="p-8">

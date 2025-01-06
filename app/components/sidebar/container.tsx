@@ -23,7 +23,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavFilters } from "@/components/sidebar/nav-filters";
-import { SidebarSearchForm } from "@/components/sidebar/search-form";
 
 // This is sample data.
 const sampleData = {
@@ -133,7 +132,6 @@ export function SidebarContainer({
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <OrganizationSwitcher organizations={sampleData.organizations} />
-        <SidebarSearchForm />
       </SidebarHeader>
 
       <SidebarContent>
