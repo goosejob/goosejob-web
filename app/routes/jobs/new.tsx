@@ -101,45 +101,72 @@ export function CreateNewJobForm() {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    console.log(values);
-    // Here you would typically send the form data to your backend
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="organizationSlug"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Organization / Company / School</FormLabel>
-              <div className="flex gap-2 items-center">
-                <FormControl>
-                  <Input placeholder="SELECT" {...field} />
-                </FormControl>
-                <div className="aspect-square">
-                  <img
-                    src="https://lh3.googleusercontent.com/kKaWGqBLttri7RicHIgIiroIE3ufOjGdcEckhMKji4BlT_jlEYxUwUFtFrCoFqHqJE9f6DgFTSrTh4Tz3ykcoW56P_ZuDmC_IUu8LSFY7JzkpE4Ul0FD"
-                    alt="Organization Logo"
-                    className="object-contain size-10 bg-muted rounded"
-                  />
-                </div>
+      <FormField
+        control={form.control}
+        name="organizationSlug"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Organization / Company / School</FormLabel>
+            <div className="flex gap-2 items-center">
+              <FormControl>
+                <Input placeholder="SELECT" {...field} />
+              </FormControl>
+              <div className="aspect-square">
+                <img
+                  src="https://lh3.googleusercontent.com/kKaWGqBLttri7RicHIgIiroIE3ufOjGdcEckhMKji4BlT_jlEYxUwUFtFrCoFqHqJE9f6DgFTSrTh4Tz3ykcoW56P_ZuDmC_IUu8LSFY7JzkpE4Ul0FD"
+                  alt="Organization Logo"
+                  className="object-contain size-10 bg-muted rounded"
+                />
               </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+            </div>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
+      <FormField
+        control={form.control}
+        name="jobTitle"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Job Title</FormLabel>
+            <FormControl>
+              <Input placeholder="e.g. Software Engineer" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="jobLevel"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Job Level</FormLabel>
+            <FormControl>
+              <Input placeholder="e.g. Senior" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <div className="flex space-x-4">
         <FormField
           control={form.control}
-          name="jobTitle"
+          name="salaryMin"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Job Title</FormLabel>
+            <FormItem className="flex-1">
+              <FormLabel>Minimum Salary</FormLabel>
               <FormControl>
-                <Input placeholder="e.g. Software Engineer" {...field} />
+                <Input
+                  type="number"
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -148,112 +175,36 @@ export function CreateNewJobForm() {
 
         <FormField
           control={form.control}
-          name="jobLevel"
+          name="salaryMax"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Job Level</FormLabel>
+            <FormItem className="flex-1">
+              <FormLabel>Maximum Salary</FormLabel>
               <FormControl>
-                <Input placeholder="e.g. Senior" {...field} />
+                <Input
+                  type="number"
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+      </div>
 
-        <div className="flex space-x-4">
-          <FormField
-            control={form.control}
-            name="salaryMin"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>Minimum Salary</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="salaryMax"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>Maximum Salary</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="flex space-x-4">
-          <FormField
-            control={form.control}
-            name="experienceMin"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>Minimum Experience (years)</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="experienceMax"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>Maximum Experience (years)</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(Number(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div>
-          <FormLabel>Job Types</FormLabel>
-          <Input />
-        </div>
-
-        <div>
-          <FormLabel>Workplace Types</FormLabel>
-          <Input />
-        </div>
-
+      <div className="flex space-x-4">
         <FormField
           control={form.control}
-          name="description"
+          name="experienceMin"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Job Description</FormLabel>
+            <FormItem className="flex-1">
+              <FormLabel>Minimum Experience (years)</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter job description" {...field} />
+                <Input
+                  type="number"
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -262,24 +213,66 @@ export function CreateNewJobForm() {
 
         <FormField
           control={form.control}
-          name="benefits"
+          name="experienceMax"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Job Benefits</FormLabel>
+            <FormItem className="flex-1">
+              <FormLabel>Maximum Experience (years)</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter job benefits" {...field} />
+                <Input
+                  type="number"
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value))}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+      </div>
 
-        <div className="flex">
-          <Button type="submit" className="flex-[1]">
-            Save Job
-          </Button>
-        </div>
-      </form>
+      <div>
+        <FormLabel>Job Types</FormLabel>
+        <Input />
+      </div>
+
+      <div>
+        <FormLabel>Workplace Types</FormLabel>
+        <Input />
+      </div>
+
+      <FormField
+        control={form.control}
+        name="description"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Job Description</FormLabel>
+            <FormControl>
+              <Textarea placeholder="Enter job description" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="benefits"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Job Benefits</FormLabel>
+            <FormControl>
+              <Textarea placeholder="Enter job benefits" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <div className="flex">
+        <Button type="submit" className="flex-[1]">
+          Save Job
+        </Button>
+      </div>
     </Form>
   );
 }

@@ -1,4 +1,5 @@
 import {
+  data,
   isRouteErrorResponse,
   Links,
   Meta,
@@ -8,7 +9,8 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import stylesheet from "./app.css?url";
+import stylesheet from "@/tailwind.css?url";
+import { sidebarState, getSidebarCookie } from "@/cookies.server";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -40,6 +42,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
+}
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const sidebarCookie = await getSidebarCookie(request);
+
+  if (sidebarCookie.sidebarState === undefined) {
+    sidebarCookie.sidebarState = true;
+  }
+
+  return data(
+    { sidebarState: sidebarCookie.sidebarState },
+    { headers: { "Set-Cookie": await sidebarState.serialize(sidebarCookie) } }
+  );
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const sidebarCookie = await getSidebarCookie(request);
+  const formData = await request.formData();
+
+  const changeSidebarState = formData.get("changeSidebarState");
+
+  if (changeSidebarState === "toggle") {
+    sidebarCookie.sidebarState = !sidebarCookie.sidebarState;
+  }
+
+  return data(null, {
+    headers: { "Set-Cookie": await sidebarState.serialize(sidebarCookie) },
+  });
 }
 
 export default function App() {

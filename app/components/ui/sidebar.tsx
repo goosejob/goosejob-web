@@ -2,6 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
 import { PanelLeft } from "lucide-react";
+import { Form, useRouteLoaderData, useSubmit } from "react-router";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -17,8 +18,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const SIDEBAR_COOKIE_NAME = "goosejob:sidebar:state";
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "14rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
@@ -65,12 +64,15 @@ const SidebarProvider = React.forwardRef<
     },
     ref
   ) => {
+    const { sidebarState } = useRouteLoaderData("root");
+    const submit = useSubmit();
+
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
-    const [_open, _setOpen] = React.useState(defaultOpen);
+    const [_open, _setOpen] = React.useState(sidebarState);
     const open = openProp ?? _open;
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
@@ -80,15 +82,13 @@ const SidebarProvider = React.forwardRef<
         } else {
           _setOpen(openState);
         }
-
-        // This sets the cookie to keep the sidebar state.
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
       },
       [setOpenProp, open]
     );
 
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
+      submit({ changeSidebarState: "toggle" }, { action: "/", method: "post" });
       return isMobile
         ? setOpenMobile((open) => !open)
         : setOpen((open) => !open);

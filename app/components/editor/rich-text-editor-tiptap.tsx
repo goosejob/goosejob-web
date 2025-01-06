@@ -124,7 +124,6 @@ export function RichTextEditorTiptap({
     immediatelyRender: false,
     onUpdate({ editor }) {
       if (handleUpdate) {
-        // console.log({ html: editor.getHTML() });
         handleUpdate(editor.getHTML());
       }
     },

@@ -19,6 +19,7 @@ export default async function handleRequest(
     <ServerRouter
       context={routerContext}
       url={request.url}
+      // @ts-ignore
       abortDelay={ABORT_DELAY}
     />,
     {

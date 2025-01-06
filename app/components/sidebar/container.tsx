@@ -6,6 +6,7 @@ import {
   Building,
   Cat,
   Dog,
+  Gauge,
   Locate,
   PawPrint,
   Rabbit,
@@ -39,6 +40,11 @@ const sampleData = {
   ],
   seeker: [
     {
+      title: "Seeker Dashboard",
+      to: "/",
+      icon: Gauge,
+    },
+    {
       title: "Jobs",
       to: "/jobs",
       icon: BriefcaseBusiness,
@@ -63,6 +69,11 @@ const sampleData = {
     },
   ],
   recruiter: [
+    {
+      title: "Recruiter Dashboard",
+      to: "/recruiter",
+      icon: Gauge,
+    },
     {
       title: "Jobs",
       to: "/jobs",

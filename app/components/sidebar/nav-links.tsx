@@ -37,49 +37,57 @@ export function NavLinks({
     <SidebarGroup>
       <SidebarGroupLabel>{label}</SidebarGroupLabel>
       <SidebarMenu>
-        <SidebarMenuItem>
-          <SidebarMenuButton asChild tooltip="Dashboard">
-            <Link to="/" className="flex gap-2">
-              <Gauge />
-              <span className="font-medium">Dashboard</span>
-            </Link>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+        {groups.map((group) => {
+          const hasItems = group.items && group.items.length > 0;
 
-        {groups.map((group) => (
-          <Collapsible
-            key={group.title}
-            asChild
-            defaultOpen={group.isActive}
-            className="group/collapsible"
-          >
-            <SidebarMenuItem>
-              <CollapsibleTrigger asChild>
+          if (!hasItems) {
+            return (
+              <SidebarMenuItem key={group.title}>
                 <SidebarMenuButton asChild tooltip={group.title}>
                   <Link to={group.to}>
                     {group.icon && <group.icon />}
                     <span className="font-medium">{group.title}</span>
-                    <ChevronRight className="ml-auto transition-transform duration-100 group-data-[state=open]/collapsible:rotate-90" />
                   </Link>
                 </SidebarMenuButton>
-              </CollapsibleTrigger>
+              </SidebarMenuItem>
+            );
+          }
 
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  {group.items?.map((item) => (
-                    <SidebarMenuSubItem key={item.title}>
-                      <SidebarMenuSubButton asChild>
-                        <a href={item.to}>
-                          <span>{item.title}</span>
-                        </a>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
-              </CollapsibleContent>
-            </SidebarMenuItem>
-          </Collapsible>
-        ))}
+          return (
+            <Collapsible
+              key={group.title}
+              asChild
+              defaultOpen={group.isActive}
+              className="group/collapsible"
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton asChild tooltip={group.title}>
+                    <Link to={group.to}>
+                      {group.icon && <group.icon />}
+                      <span className="font-medium">{group.title}</span>
+                      <ChevronRight className="ml-auto transition-transform duration-100 group-data-[state=open]/collapsible:rotate-90" />
+                    </Link>
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {group.items?.map((item) => (
+                      <SidebarMenuSubItem key={item.title}>
+                        <SidebarMenuSubButton asChild>
+                          <a href={item.to}>
+                            <span>{item.title}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );
