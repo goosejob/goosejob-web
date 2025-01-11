@@ -1,6 +1,6 @@
-workers_dev = true
 name = "web"
-compatibility_date = "2024-11-18"
+workers_dev = true
+compatibility_date = "2024-12-30"
 main = "./build/server/index.js"
 assets = { directory = "./build/client/" }
 

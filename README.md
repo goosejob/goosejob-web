@@ -53,3 +53,8 @@ Promote a version to production after verification or roll it out progressively.
 ```sh
 bunx wrangler versions deploy
 ```
+
+## Notes
+
+- [Deploy to Cloudflare Workers & Pages - Prisma Docs](https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare)
+  - [@prisma/adapter-pg-worker - npm](https://www.npmjs.com/package/@prisma/adapter-pg-worker)

@@ -88,7 +88,9 @@ const SidebarProvider = React.forwardRef<
 
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
-      submit({ changeSidebarState: "toggle" }, { action: "/", method: "post" });
+      // FIX: This cause a redirect
+      // submit({ changeSidebarState: "toggle" }, { action: "/", method: "post" });
+
       return isMobile
         ? setOpenMobile((open) => !open)
         : setOpen((open) => !open);

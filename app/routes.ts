@@ -23,4 +23,5 @@ export default [
   ]),
 
   route("editor", "routes/editor/demo.tsx"),
+  route("healthcheck", "routes/healthcheck.tsx"),
 ] satisfies RouteConfig;

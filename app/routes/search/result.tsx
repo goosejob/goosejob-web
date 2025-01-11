@@ -5,8 +5,6 @@ import { loadSearchParams } from "@/modules/search/nuqs";
 export function loader({ request }: Route.LoaderArgs) {
   const { q } = loadSearchParams(request);
 
-  console.info({ q });
-
   return { q };
 }
 
