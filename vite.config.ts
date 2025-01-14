@@ -5,6 +5,7 @@ import path from "path";
 import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import EnvironmentPlugin from "vite-plugin-environment";
 
 export default defineConfig(({ isSsrBuild }) => ({
   build: {
@@ -37,12 +38,9 @@ export default defineConfig(({ isSsrBuild }) => ({
     },
   },
   plugins: [
+    EnvironmentPlugin(["DATABASE_URL"]),
     vitePluginViteNodeMiniflare({
       entry: "./workers/app.ts",
-      miniflareOptions: (options) => {
-        options.compatibilityDate = "2024-11-18";
-        options.compatibilityFlags = ["nodejs_compat"];
-      },
     }),
     reactRouter(),
     tsconfigPaths(),

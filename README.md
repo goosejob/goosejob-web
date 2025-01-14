@@ -12,14 +12,16 @@ Access at <https://goosejob.com>
 
 ## Tech Stack
 
+- TypeScript
 - React
-- Tailwind CSS
-  - shadcn/ui
+- Tailwind CSS with shadcn/ui
 - React Router v7 Framework
 - Docker
 - PostgreSQL
 - Drizzle ORM
   - [Example project for Drizzle ORM + Cloudflare Worker + Neon Serverless](https://github.com/drizzle-team/drizzle-orm/tree/main/examples/neon-cloudflare)
+- Better-Auth
+- Cloudflare Workers
 
 ## Development
 
