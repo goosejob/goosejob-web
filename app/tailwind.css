@@ -17,12 +17,12 @@ body {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-    --card: 221.2 83.2% 98.3%;
+    --card: 221.2 83.2% 99.6%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 212 96% 78%;
+    --primary-foreground: 226 57% 21%;
     --secondary: 213.33 96.92% 87.25%;
     --secondary-foreground: 224.44 64.29% 32.94%;
     --muted: 214.74 90.48% 95.88%;
