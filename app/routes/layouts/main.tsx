@@ -34,7 +34,9 @@ export default function Route() {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link to="/">🪿 Goosejob</Link>
+                    <Link to="/" prefetch="intent">
+                      🪿 Goosejob
+                    </Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />

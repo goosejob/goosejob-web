@@ -21,14 +21,14 @@ export function CreateNewDropdown() {
 
       <DropdownMenuContent align="end" className="w-[180px] p-1">
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to="/jobs/new">
+          <Link to="/jobs/new" prefetch="intent">
             <Briefcase className="size-4" />
             <span>New Job</span>
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to="/organizations/new">
+          <Link to="/organizations/new" prefetch="intent">
             <Building2 className="size-4" />
             <span>New Organization</span>
           </Link>
