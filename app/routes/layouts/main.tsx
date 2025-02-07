@@ -51,7 +51,7 @@ export default function Route() {
           </div>
         </header>
 
-        <main className="p-8">
+        <main className="p-4 sm:p-8 space-y-4 sm:space-y-8">
           <Outlet />
         </main>
       </SidebarInset>

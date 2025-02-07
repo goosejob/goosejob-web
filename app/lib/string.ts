@@ -1,3 +1,9 @@
+import slugify from "slugify";
+
+export function convertToSlug(text: string) {
+  return slugify(text, { lower: true });
+}
+
 export function isValidUrl(url: string) {
   return /^https?:\/\/\S+$/.test(url);
 }

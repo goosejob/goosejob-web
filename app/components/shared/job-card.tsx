@@ -1,4 +1,6 @@
+import type { Job } from "@prisma/client";
 import { MapPin, Wallet } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,44 +11,61 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import type { Job } from "@/modules/job/data";
+import { convertDecimalToCurrency } from "@/lib/currency";
+import { ButtonLink } from "../ui/button-link";
 
 export function JobCard({ job }: { job: Job }) {
+  const salaryMin = job.salaryMin
+    ? convertDecimalToCurrency(job.salaryMin.d)
+    : 0;
+
+  const salaryMax = job.salaryMax
+    ? convertDecimalToCurrency(job.salaryMax?.d)
+    : 0;
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          {job.jobTitle} ({job.jobLevel})
+          <span>{job.title}</span>
+          {job.level && <span> ({job.level})</span>}
         </CardTitle>
-        <CardDescription className="flex flex-wrap gap">
-          <div className="flex items-center gap">
-            <MapPin className="h-4" />
-            {job.jobLocation}
+
+        <CardDescription className="space-y-2">
+          <div className="flex items-center gap-1">
+            <MapPin className="size-4" />
+            <span> {job.location ?? "Unknown"}</span>
           </div>
-          <div className="flex items-center gap">
-            <Wallet className="h-4" />
-            {job.salaryCurrency}
-            {job.salaryMin}-{job.salaryMax}/{job.salaryPeriod}
+          <div className="flex items-center gap-1">
+            <Wallet className="size-4" />
+            <span>{job.salaryCurrency}</span>
+            <span>
+              {job.salaryMin
+                ? `${salaryMin}-${salaryMax}/${job.salaryPeriod}`
+                : "Salary undisclosed"}
+            </span>
           </div>
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+
+      <CardContent className="space-y-4">
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4 md:h-12">
           <div>
-            <span className="font-medium">{job.jobTypes.join(", ")}</span>
-            <CardDescription>Job Type</CardDescription>
+            <p className="text-xs">Job Types</p>
+            <p className="font-medium">{job.types.join(", ")}</p>
           </div>
           <Separator className="hidden md:block" orientation="vertical" />
           <div>
-            <span className="font-medium">{job.workplaceTypes.join(", ")}</span>
-            <CardDescription>Workplace</CardDescription>
+            <p className="text-xs">Workplace Types</p>
+            <p className="font-medium">{job.workplaceTypes.join(", ")}</p>
           </div>
         </div>
-        <p className="line-clamp-2">{job.description}</p>
+        <p className="line-clamp-2 text-sm">{job.description}</p>
       </CardContent>
+
       <CardFooter>
-        <Button>See More</Button>
+        <ButtonLink to={`/jobs/${job.slug}`}>See Details</ButtonLink>
+        <Button variant="secondary">Quick Apply</Button>
       </CardFooter>
     </Card>
   );

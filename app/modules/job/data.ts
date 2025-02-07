@@ -1,22 +1,23 @@
-export type Job = {
-  jobTitle: string;
-  jobLevel: string;
-  jobLocation: string;
-  jobTypes: string[];
+export type SeedJob = {
+  slug?: string;
+  title: string;
+  description: string;
+  level: string;
+  location: string;
+  types: string[];
   salaryCurrency: string;
   salaryMin: number;
   salaryMax: number;
   salaryPeriod: string;
   workplaceTypes: string[];
-  description: string;
 };
 
-export const seedDataJobs: Job[] = [
+export const dataSeedJobs: SeedJob[] = [
   {
-    jobTitle: "Software Engineer",
-    jobLevel: "Mid-level",
-    jobLocation: "New York, NY",
-    jobTypes: ["Full-time", "Contract"],
+    title: "Software Engineer",
+    level: "Mid-level",
+    location: "New York, NY",
+    types: ["Full-time", "Contract"],
     salaryCurrency: "USD",
     salaryMin: 80000,
     salaryMax: 110000,
@@ -26,10 +27,10 @@ export const seedDataJobs: Job[] = [
       "Design, develop, and maintain scalable software solutions in a collaborative environment.",
   },
   {
-    jobTitle: "Data Scientist",
-    jobLevel: "Senior",
-    jobLocation: "San Francisco, CA",
-    jobTypes: ["Full-time"],
+    title: "Data Scientist",
+    level: "Senior",
+    location: "San Francisco, CA",
+    types: ["Full-time"],
     salaryCurrency: "USD",
     salaryMin: 120000,
     salaryMax: 150000,
@@ -39,23 +40,23 @@ export const seedDataJobs: Job[] = [
       "Analyze large datasets to identify trends and provide actionable insights to drive business decisions.",
   },
   {
-    jobTitle: "UI/UX Designer",
-    jobLevel: "Entry-level",
-    jobLocation: "Remote",
-    jobTypes: ["Part-time"],
-    salaryCurrency: "USD",
-    salaryMin: 40000,
-    salaryMax: 60000,
-    salaryPeriod: "year",
+    title: "UI/UX Designer",
+    level: "Mid-Level",
+    location: "Remote",
+    types: ["Part-time"],
+    salaryCurrency: "IDR",
+    salaryMin: 5_000_000,
+    salaryMax: 8_000_000,
+    salaryPeriod: "month",
     workplaceTypes: ["Remote"],
     description:
       "Design user-friendly interfaces and create seamless experiences across web and mobile platforms.",
   },
   {
-    jobTitle: "Product Manager",
-    jobLevel: "Senior",
-    jobLocation: "Los Angeles, CA",
-    jobTypes: ["Full-time"],
+    title: "Product Manager",
+    level: "Senior",
+    location: "Los Angeles, CA",
+    types: ["Full-time"],
     salaryCurrency: "USD",
     salaryMin: 100000,
     salaryMax: 130000,
@@ -65,10 +66,10 @@ export const seedDataJobs: Job[] = [
       "Manage product development from ideation to launch, ensuring alignment with business goals and customer needs.",
   },
   {
-    jobTitle: "Marketing Specialist",
-    jobLevel: "Mid-level",
-    jobLocation: "Chicago, IL",
-    jobTypes: ["Full-time"],
+    title: "Marketing Specialist",
+    level: "Mid-level",
+    location: "Chicago, IL",
+    types: ["Full-time"],
     salaryCurrency: "USD",
     salaryMin: 55000,
     salaryMax: 75000,
