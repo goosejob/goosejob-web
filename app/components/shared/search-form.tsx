@@ -14,15 +14,15 @@ export function SearchForm() {
   const [q] = useQueryState("q");
 
   return (
-    <Form method="get" action="/search">
+    <Form method="get" action="/search" className="hidden sm:block">
       <div className="relative">
         <Label htmlFor="search" className="sr-only">
           Search
         </Label>
         <SidebarInput
+          className="h-9 pl-8"
           id="search"
           placeholder="Search anything..."
-          className="h-9 pl-8"
           name="q"
           defaultValue={q || ""}
         />

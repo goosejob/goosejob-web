@@ -9,8 +9,24 @@ export type SeedJob = {
   salaryMin: number;
   salaryMax: number;
   salaryPeriod: string;
+  experienceMin?: number;
+  experienceMax?: number;
   workplaceTypes: string[];
 };
+
+export const defaultJobTypeOptions = [
+  { value: "full-time", label: "Full-time" },
+  { value: "part-time", label: "Part-time" },
+  { value: "contract", label: "Contract" },
+  { value: "freelance", label: "Freelance" },
+  { value: "internship", label: "Internship" },
+];
+
+export const defaultWorkplaceTypeOptions = [
+  { value: "remote", label: "Remote" },
+  { value: "onsite", label: "On-site" },
+  { value: "hybrid", label: "Hybrid" },
+];
 
 export const dataSeedJobs: SeedJob[] = [
   {
@@ -25,6 +41,8 @@ export const dataSeedJobs: SeedJob[] = [
     workplaceTypes: ["Hybrid", "Remote"],
     description:
       "Design, develop, and maintain scalable software solutions in a collaborative environment.",
+    experienceMin: 3,
+    experienceMax: 5,
   },
   {
     title: "Data Scientist",
@@ -38,6 +56,8 @@ export const dataSeedJobs: SeedJob[] = [
     workplaceTypes: ["On-site"],
     description:
       "Analyze large datasets to identify trends and provide actionable insights to drive business decisions.",
+    experienceMin: 5,
+    experienceMax: 7,
   },
   {
     title: "UI/UX Designer",
@@ -51,6 +71,8 @@ export const dataSeedJobs: SeedJob[] = [
     workplaceTypes: ["Remote"],
     description:
       "Design user-friendly interfaces and create seamless experiences across web and mobile platforms.",
+    experienceMin: 2,
+    experienceMax: 4,
   },
   {
     title: "Product Manager",
@@ -64,6 +86,8 @@ export const dataSeedJobs: SeedJob[] = [
     workplaceTypes: ["Hybrid"],
     description:
       "Manage product development from ideation to launch, ensuring alignment with business goals and customer needs.",
+    experienceMin: 5,
+    experienceMax: 7,
   },
   {
     title: "Marketing Specialist",
@@ -77,5 +101,7 @@ export const dataSeedJobs: SeedJob[] = [
     workplaceTypes: ["On-site", "Hybrid"],
     description:
       "Develop and execute marketing strategies to drive brand awareness, engagement, and revenue growth.",
+    experienceMin: 2,
+    experienceMax: 4,
   },
 ];

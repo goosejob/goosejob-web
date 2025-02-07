@@ -25,7 +25,7 @@ export default function Route({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <h1 className="text-2xl">List of Available Jobs</h1>
+      <h1>List of Available Jobs</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         {jobs.map((job, index) => (
           <JobCard key={index} job={job as Job} />

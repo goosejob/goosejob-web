@@ -17,11 +17,8 @@ model Job {
   id   String @id @default(ulid())
   slug String @unique @db.Text
 
-  // Meta
-  title       String @db.Text
-  description String @db.Text
-
-  // Details
+  // Quick Details
+  title    String   @db.Text
   level    String?
   location String?
   types    String[]
@@ -32,8 +29,19 @@ model Job {
   salaryMax      Decimal? @db.Money
   salaryPeriod   String?
 
+  // Experience
+  experienceMin Int?
+  experienceMax Int?
+
   // Workplace
   workplaceTypes String[]
+
+  // Long Details
+  description String @default("No detailed description.") @db.Text
+  benefits    String @default("No detailed benefits.") @db.Text
+
+  // Tags
+  skills String[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

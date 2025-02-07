@@ -6,6 +6,8 @@ import { dataSeedJobs } from "@/modules/job/data";
 const prisma = new PrismaClient();
 
 async function main() {
+  // await prisma.job.deleteMany(); // ❌ Uncomment to delete all
+
   for (const dataSeedJob of dataSeedJobs) {
     const jobUpsertData = {
       ...dataSeedJob,

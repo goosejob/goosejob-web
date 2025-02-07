@@ -30,7 +30,7 @@ export default function Route() {
 
             <Separator orientation="vertical" className="mr-2 h-4" />
 
-            <Breadcrumb>
+            <Breadcrumb className="hidden sm:block">
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
