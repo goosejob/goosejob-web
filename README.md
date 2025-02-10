@@ -2,26 +2,30 @@
 
 Good job and career search platform.
 
-Access at <https://goosejob.com>
+Access at <https://goosejob.allnimal.com>
 
 ## Features
 
-- Find tech jobs and companies
-- Post job listings
-- See salary range
+- Find tech jobs, along with organizations/companies/etc
+- Post job listings from organizations
+- See salary range clearly
+- Share job post to social media with OpenGraph image
+- Automatic status change after certain period
 
 ## Tech Stack
 
-- React
-- Tailwind CSS
-  - shadcn/ui
-- React Router v7 Framework
-- Docker
-- PostgreSQL
-- Drizzle ORM
-  - [Example project for Drizzle ORM + Cloudflare Worker + Neon Serverless](https://github.com/drizzle-team/drizzle-orm/tree/main/examples/neon-cloudflare)
+- [React](https://react.dev)
+- [Tailwind CSS](https://tailwindcss.com)
+  - [shadcn/ui](https://ui.shadcn.com)
+- [React Router v7 Framework](https://reactrouter.com)
+  - Continuation of [Remix](https://remix.run)
+- [Docker](https://docker.com)
+  - [Docker Compose](https://docs.docker.com/compose)
+- [PostgreSQL](https://postgresql.org)
+- [Prisma ORM](https://prisma.io)
+- [Vercel](https://vercel.com)
 
-## Development
+## Getting Started
 
 Install the dependencies:
 
@@ -29,10 +33,22 @@ Install the dependencies:
 bun install
 ```
 
+Setup the `.env` and prepare the database instance with Docker:
+
+```sh
+bun db:up
+```
+
+Migrate the database, including generate Prisma Client and seed data:
+
+```sh
+bun db:migrate
+```
+
 Start the development server:
 
 ```sh
-bun run dev
+bun dev
 ```
 
 Open at `http://localhost:5173`.
@@ -43,24 +59,4 @@ Create a production build:
 
 ```sh
 bun run build
-```
-
-Deployment is done using the Cloudflare Wrangler CLI.
-
-To deploy directly to production:
-
-```sh
-bunx wrangler deploy
-```
-
-To deploy a preview URL:
-
-```sh
-bunx wrangler versions upload
-```
-
-Promote a version to production after verification or roll it out progressively.
-
-```sh
-bunx wrangler versions deploy
 ```
