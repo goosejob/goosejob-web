@@ -26,8 +26,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({ request }: Route.ActionArgs) {
+  // TODO: Check user later
   const count = await prisma.job.count();
-
   return { count };
 }
 
@@ -48,9 +48,7 @@ export async function action({ request }: Route.ActionArgs) {
     },
   });
 
-  console.info({ newJob });
-
-  return redirect("/jobs/new");
+  return redirect(`/jobs/${newJob.slug}`);
 }
 
 export default function Route({

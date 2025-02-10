@@ -3,12 +3,7 @@ import { useQueryState } from "nuqs";
 import { Search } from "lucide-react";
 
 import { Label } from "@/components/ui/label";
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarInput,
-} from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
+import { SidebarInput } from "@/components/ui/sidebar";
 
 export function SearchForm() {
   const [q] = useQueryState("q");

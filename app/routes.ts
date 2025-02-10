@@ -10,6 +10,8 @@ export default [
     index("routes/dashboard.tsx"),
 
     route("jobs", "routes/jobs/list.tsx"),
+    // route("jobs/:slug", "routes/jobs/slug.tsx"),
+
     route("jobs/new", "routes/jobs/new.tsx"),
     route("jobs/saved", "routes/jobs/saved.tsx"),
     route("jobs/applied", "routes/jobs/applied.tsx"),

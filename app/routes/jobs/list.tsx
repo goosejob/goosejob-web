@@ -1,6 +1,6 @@
+import type { Route } from "./+types/list";
 import type { Job } from "@prisma/client";
 
-import type { Route } from "./+types/list";
 import { JobCard } from "@/components/shared/job-card";
 import { prisma } from "@/lib/prisma";
 
