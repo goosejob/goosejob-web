@@ -4,13 +4,13 @@ A modern, production-ready template for building full-stack React applications u
 
 ## Features
 
+- 📖 [React Router docs](https://reactrouter.com)
 - 🚀 Server-side rendering
 - ⚡️ Hot Module Replacement (HMR)
 - 📦 Asset bundling and optimization
 - 🔄 Data loading and mutations
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
 
 ## Getting Started
 
@@ -38,28 +38,6 @@ Create a production build:
 
 ```sh
 bun run build
-```
-
-## Deployment
-
-Deployment is done using the Wrangler CLI.
-
-To deploy directly to production:
-
-```sh
-bunx wrangler deploy
-```
-
-To deploy a preview URL:
-
-```sh
-bunx wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```sh
-bunx wrangler versions deploy
 ```
 
 ## Styling

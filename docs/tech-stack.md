@@ -1,6 +1,16 @@
 # Tech Stack
 
-## 1. Full Stack JavaScript with Next.js v15
+## 1. Full Stack JavaScript with React Router v7 (Remix v3)
+
+- React v19
+- React Router v7 Framework (alias Remix v3)
+  - Fast & lightweight
+  - The development using Vite
+  - 10s to build in production
+- Vercel (serverless)
+  - Prisma can work
+
+## 2. Full Stack JavaScript with Next.js v15
 
 - React v19
 - Next.js v15
@@ -17,18 +27,6 @@
   - Deploy as organization
     - 1. Free trial for 14 days
     - 2. Pay $20/month
-
-## 2. Full Stack JavaScript with React Router v7 (Remix v3)
-
-- React v19
-- React Router v7 Framework (Remix v3)
-  - Fast & lightweight
-  - The development using Vite
-  - 10s to build in production
-- Tried using Cloudflare Workers (serverless)
-  - Prisma doesn't work
-- Vercel (serverless)
-  - Prisma can work
 
 ## 3. Frontend React Router + Backend Hono (better than Express)
 
