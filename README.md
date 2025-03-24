@@ -45,6 +45,12 @@ Migrate the database, including generate Prisma Client and seed data:
 bun db:migrate
 ```
 
+In case the migrate didn't seed the data, run the seed command:
+
+```sh
+bun db:seed
+```
+
 Start the development server:
 
 ```sh
@@ -60,3 +66,8 @@ Create a production build:
 ```sh
 bun run build
 ```
+
+## References
+
+- Remote OK
+- <https://repoboard.org>
