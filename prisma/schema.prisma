@@ -29,14 +29,14 @@ model Job {
   location String?
 
   // Salary
-  salaryCurrency String? // USD, EUR, CAD, AUD, SGD, IDR, etc
-  salaryMin      Decimal? @db.Money
-  salaryMax      Decimal? @db.Money
-  salaryPeriod   String? // hourly, daily, weekly, monthly, yearly
+  salaryCurrency String // USD, EUR, CAD, AUD, SGD, IDR, etc
+  salaryMin      Decimal @db.Money
+  salaryMax      Decimal @db.Money
+  salaryPeriod   String // hourly, daily, weekly, monthly, yearly
 
   // Experience
-  experienceMin Int?
-  experienceMax Int?
+  experienceMin Int
+  experienceMax Int
 
   // Workplace
   types          String[]

@@ -14,7 +14,7 @@
     "db:gen": "prisma generate --no-hints",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "db:reset": "prisma migrate reset --force",
+    "db:reset": "prisma migrate reset --force --skip-seed",
     "deploy": "wrangler deploy"
   },
   "prisma": {
@@ -66,7 +66,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
-    "decimal.js": "^10.5.0",
     "isbot": "^5.1.26",
     "lucide-react": "^0.488.0",
     "nanoid": "^5.1.5",

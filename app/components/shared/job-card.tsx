@@ -10,14 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { convertToCurrency } from "@/lib/currency";
 import { ButtonLink } from "@/components/ui/button-link";
 import { joinStringsFallback } from "@/lib/string";
-import type { JobWithRelations } from "@/modules/job/type";
+import type { JobRefined } from "@/modules/job/type";
+import { convertToCurrency } from "@/lib/currency";
 
-export function JobCard({ job }: { job: JobWithRelations }) {
-  const salaryMin = convertToCurrency(job.salaryMin?.d);
-  const salaryMax = convertToCurrency(job.salaryMax?.d);
+export function JobCard({ job }: { job: JobRefined }) {
+  const salaryMin = convertToCurrency(job.salaryMin);
+  const salaryMax = convertToCurrency(job.salaryMax);
   const salaryPeriod = job.salaryPeriod ?? "year";
 
   return (
@@ -40,10 +40,7 @@ export function JobCard({ job }: { job: JobWithRelations }) {
           <div className="flex items-center gap-1">
             <Wallet className="size-4" />
             <span>{job.salaryCurrency}</span>
-            <span>
-              {job.salaryMin && `${salaryMin}-${salaryMax}/${salaryPeriod}`}
-              {!job.salaryMin && "Salary undisclosed"}
-            </span>
+            <span>{`${salaryMin}-${salaryMax}/${salaryPeriod}`}</span>
           </div>
         </CardDescription>
       </CardHeader>
