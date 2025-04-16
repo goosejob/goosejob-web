@@ -11,7 +11,6 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 model Job {
@@ -25,10 +24,9 @@ model Job {
   organizationId String
 
   // Quick Details
-  title    String   @db.Text
+  title    String  @db.Text
   level    String?
   location String?
-  types    String[]
 
   // Salary
   salaryCurrency String? // USD, EUR, CAD, AUD, SGD, IDR, etc
@@ -41,6 +39,7 @@ model Job {
   experienceMax Int?
 
   // Workplace
+  types          String[]
   workplaceTypes String[]
 
   // Long Details

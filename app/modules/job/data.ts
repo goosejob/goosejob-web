@@ -128,8 +128,8 @@ export const dataSeedJobs: SeedJob[] = [
     location: "Indonesia",
     types: ["Part-time", "Freelance"],
     salaryCurrency: "IDR",
-    salaryMin: 3_000_000,
-    salaryMax: 5_000_000,
+    salaryMin: 3000000,
+    salaryMax: 5000000,
     salaryPeriod: "month",
     workplaceTypes: ["Remote"],
     description:
@@ -144,8 +144,8 @@ export const dataSeedJobs: SeedJob[] = [
     location: "Indonesia",
     types: ["Part-time", "Contract"],
     salaryCurrency: "IDR",
-    salaryMin: 6_000_000,
-    salaryMax: 10_000_000,
+    salaryMin: 6000000,
+    salaryMax: 10000000,
     salaryPeriod: "month",
     workplaceTypes: ["Hybrid", "Remote"],
     description:
