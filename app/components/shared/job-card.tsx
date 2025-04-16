@@ -1,5 +1,5 @@
 import type { Job } from "@prisma/client";
-import { MapPin, Wallet } from "lucide-react";
+import { MapPin, Wallet, Building2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,20 +14,17 @@ import { Separator } from "@/components/ui/separator";
 import { convertDecimalToCurrency } from "@/lib/currency";
 import { ButtonLink } from "@/components/ui/button-link";
 import { joinStringsFallback } from "@/lib/string";
+import type { JobWithRelations } from "@/modules/job/type";
+import { Debug } from "@/components/shared/debug";
 
-export function JobCard({ job }: { job: Job }) {
-  const salaryMin = job.salaryMin
-    ? convertDecimalToCurrency(job.salaryMin.d)
-    : 0;
-
-  const salaryMax = job.salaryMax
-    ? convertDecimalToCurrency(job.salaryMax?.d)
-    : 0;
-
+export function JobCard({ job }: { job: JobWithRelations }) {
+  const salaryMin = convertDecimalToCurrency(job.salaryMin);
+  const salaryMax = convertDecimalToCurrency(job.salaryMax);
   const salaryPeriod = job.salaryPeriod ?? "year";
 
   return (
     <Card>
+      {/* <Debug>{job}</Debug> */}
       <CardHeader>
         <CardTitle>
           <span>{job.title}</span>
@@ -35,6 +32,10 @@ export function JobCard({ job }: { job: Job }) {
         </CardTitle>
 
         <CardDescription className="space-y-2">
+          <div className="flex items-center gap-1">
+            <Building2 className="size-4" />
+            <span>{job.organization.name}</span>
+          </div>
           <div className="flex items-center gap-1">
             <MapPin className="size-4" />
             <span> {job.location ?? "Unknown"}</span>

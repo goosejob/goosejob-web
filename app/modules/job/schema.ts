@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// TODO: optional fields to be added later in form fields
+// TODO: The optional fields to be added later in form fields
 export const newJobFormSchema = z.object({
   organizationSlug: z.string().nonempty("Organization is required").optional(),
 

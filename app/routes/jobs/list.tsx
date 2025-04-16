@@ -1,5 +1,5 @@
 import type { Route } from "./+types/list";
-import type { Job } from "@prisma/client";
+import type { JobWithRelations } from "@/modules/job/type";
 
 import { JobCard } from "@/components/shared/job-card";
 import { prisma } from "@/lib/prisma";
@@ -17,6 +17,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader() {
   const jobs = await prisma.job.findMany({
     where: { status: { slug: "published" } },
+    include: { status: true, organization: true },
   });
 
   return { jobs };
@@ -30,7 +31,7 @@ export default function Route({ loaderData }: Route.ComponentProps) {
       <h1>List of Available Jobs</h1>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         {jobs.map((job, index) => (
-          <JobCard key={index} job={job as Job} />
+          <JobCard key={index} job={job as JobWithRelations} />
         ))}
       </div>
     </>
