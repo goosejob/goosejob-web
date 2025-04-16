@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { convertToSlug } from "@/lib/string";
 import { dataJobStatusOptions, dataSeedJobs } from "@/modules/job/data";
+import { dataSeedOrganizations } from "@/modules/organization/data";
 
 const prisma = new PrismaClient();
 
@@ -22,6 +23,18 @@ async function main() {
 
     console.log(
       `🗂️ Job Status: ${upsertedJobStatus.name} (${upsertedJobStatus.slug})`
+    );
+  }
+
+  for (const dataSeedOrganization of dataSeedOrganizations) {
+    const upsertedOrganization = await prisma.organization.upsert({
+      where: { slug: dataSeedOrganization.slug },
+      update: dataSeedOrganization,
+      create: dataSeedOrganization,
+    });
+
+    console.log(
+      `🏢 Organization: ${upsertedOrganization.name} (${upsertedOrganization.slug})`
     );
   }
 

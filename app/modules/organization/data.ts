@@ -1,107 +1,72 @@
-export type SeedJob = {
-  slug?: string;
-  title: string;
+export type SeedOrganization = {
+  slug: string;
+  name: string;
   description: string;
-  level: string;
   location: string;
-  types: string[];
-  salaryCurrency: string;
-  salaryMin: number;
-  salaryMax: number;
-  salaryPeriod: string;
-  experienceMin?: number;
-  experienceMax?: number;
   workplaceTypes: string[];
 };
 
-export const defaultJobTypeOptions = [
-  { value: "full-time", label: "Full-time" },
-  { value: "part-time", label: "Part-time" },
-  { value: "contract", label: "Contract" },
-  { value: "freelance", label: "Freelance" },
-  { value: "internship", label: "Internship" },
+export const dataWorkplaceTypeOptions = [
+  { slug: "remote", name: "Remote" },
+  { slug: "onsite", name: "On-site" },
+  { slug: "hybrid", name: "Hybrid" },
 ];
 
-export const defaultWorkplaceTypeOptions = [
-  { value: "remote", label: "Remote" },
-  { value: "onsite", label: "On-site" },
-  { value: "hybrid", label: "Hybrid" },
-];
-
-export const dataSeedJobs: SeedJob[] = [
+export const dataSeedOrganizations: SeedOrganization[] = [
   {
-    title: "Software Engineer",
-    level: "Mid-level",
-    location: "New York, NY",
-    types: ["Full-time", "Contract"],
-    salaryCurrency: "USD",
-    salaryMin: 80000,
-    salaryMax: 110000,
-    salaryPeriod: "year",
+    slug: "google",
+    name: "Google",
+    description:
+      "A multinational technology company specializing in Internet-related services and products.",
+    location: "Mountain View, CA",
     workplaceTypes: ["Hybrid", "Remote"],
-    description:
-      "Design, develop, and maintain scalable software solutions in a collaborative environment.",
-    experienceMin: 3,
-    experienceMax: 5,
   },
   {
-    title: "Data Scientist",
-    level: "Senior",
-    location: "San Francisco, CA",
-    types: ["Full-time"],
-    salaryCurrency: "USD",
-    salaryMin: 120000,
-    salaryMax: 150000,
-    salaryPeriod: "year",
-    workplaceTypes: ["On-site"],
+    slug: "facebook",
+    name: "Facebook",
     description:
-      "Analyze large datasets to identify trends and provide actionable insights to drive business decisions.",
-    experienceMin: 5,
-    experienceMax: 7,
-  },
-  {
-    title: "UI/UX Designer",
-    level: "Mid-Level",
-    location: "Remote",
-    types: ["Part-time"],
-    salaryCurrency: "IDR",
-    salaryMin: 5_000_000,
-    salaryMax: 8_000_000,
-    salaryPeriod: "month",
-    workplaceTypes: ["Remote"],
-    description:
-      "Design user-friendly interfaces and create seamless experiences across web and mobile platforms.",
-    experienceMin: 2,
-    experienceMax: 4,
-  },
-  {
-    title: "Product Manager",
-    level: "Senior",
-    location: "Los Angeles, CA",
-    types: ["Full-time"],
-    salaryCurrency: "USD",
-    salaryMin: 100000,
-    salaryMax: 130000,
-    salaryPeriod: "year",
-    workplaceTypes: ["Hybrid"],
-    description:
-      "Manage product development from ideation to launch, ensuring alignment with business goals and customer needs.",
-    experienceMin: 5,
-    experienceMax: 7,
-  },
-  {
-    title: "Marketing Specialist",
-    level: "Mid-level",
-    location: "Chicago, IL",
-    types: ["Full-time"],
-    salaryCurrency: "USD",
-    salaryMin: 55000,
-    salaryMax: 75000,
-    salaryPeriod: "year",
+      "A social media and technology company that operates several businesses and is listed on the NASDAQ stock exchange.",
+    location: "Menlo Park, CA",
     workplaceTypes: ["On-site", "Hybrid"],
+  },
+  {
+    slug: "youtube",
+    name: "YouTube",
     description:
-      "Develop and execute marketing strategies to drive brand awareness, engagement, and revenue growth.",
-    experienceMin: 2,
-    experienceMax: 4,
+      "A video-sharing platform where users can upload, share, and view videos.",
+    location: "San Bruno, CA",
+    workplaceTypes: ["Hybrid", "Remote"],
+  },
+  {
+    slug: "x",
+    name: "X",
+    description:
+      "A research and development company that focuses on making the world a better place through technology.",
+    location: "Mountain View, CA",
+    workplaceTypes: ["On-site"],
+  },
+  {
+    slug: "shopify",
+    name: "Shopify",
+    description:
+      "A Canadian multinational e-commerce company that provides businesses with an online platform to design, set up, and manage their stores.",
+    location: "Ottawa, ON",
+    workplaceTypes: ["Hybrid", "Remote"],
+  },
+  {
+    slug: "bearmentor",
+    name: "Bearmentor",
+    description:
+      "Mentoring platform that connects students with industry professionals for guidance and support.",
+    location: "Indonesia",
+    workplaceTypes: ["On-site", "Remote"],
+  },
+  {
+    slug: "catamyst",
+    name: "Catamyst",
+    description:
+      "Software Development agency that helps businesses grow their online business.",
+    location: "Indonesia",
+    workplaceTypes: ["Hybrid", "Remote"],
   },
 ];
