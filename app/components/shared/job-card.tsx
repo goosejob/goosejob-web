@@ -1,4 +1,3 @@
-import type { Job } from "@/generated/prisma";
 import { MapPin, Wallet, Building2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,6 @@ import { convertToCurrency } from "@/lib/currency";
 import { ButtonLink } from "@/components/ui/button-link";
 import { joinStringsFallback } from "@/lib/string";
 import type { JobWithRelations } from "@/modules/job/type";
-import { Debug } from "@/components/shared/debug";
 
 export function JobCard({ job }: { job: JobWithRelations }) {
   const salaryMin = convertToCurrency(job.salaryMin?.d);

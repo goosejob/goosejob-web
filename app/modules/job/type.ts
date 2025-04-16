@@ -1,4 +1,4 @@
-import type { Prisma, Job } from "@/generated/prisma";
+import type { Prisma, Job } from "@prisma/client";
 
 export type JobWithRelations = Job &
   Prisma.JobGetPayload<{

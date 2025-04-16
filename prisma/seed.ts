@@ -1,4 +1,4 @@
-import { PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 
 import { convertToSlug } from "@/lib/string";
 import { dataSeedJobStatuses, dataSeedJobs } from "@/modules/job/data";
