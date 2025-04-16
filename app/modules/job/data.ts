@@ -1,4 +1,5 @@
 export type SeedJob = {
+  organizationSlug?: string;
   slug?: string;
   title: string;
   description: string;
@@ -19,13 +20,13 @@ export type SeedJobStatus = {
   name: string;
 };
 
-export const dataJobStatusOptions: SeedJobStatus[] = [
+export const dataSeedJobStatuses: SeedJobStatus[] = [
   { slug: "draft", name: "Draft" },
   { slug: "published", name: "Published" },
   { slug: "archived", name: "Archived" },
 ];
 
-export const dataJobTypeOptions = [
+export const dataSeedJobTypes = [
   { value: "full-time", label: "Full-time" },
   { value: "part-time", label: "Part-time" },
   { value: "contract", label: "Contract" },
@@ -33,7 +34,7 @@ export const dataJobTypeOptions = [
   { value: "internship", label: "Internship" },
 ];
 
-export const dataWorkplaceTypeOptions = [
+export const dataSeedWorkplaceTypes = [
   { value: "remote", label: "Remote" },
   { value: "onsite", label: "On-site" },
   { value: "hybrid", label: "Hybrid" },
@@ -41,6 +42,7 @@ export const dataWorkplaceTypeOptions = [
 
 export const dataSeedJobs: SeedJob[] = [
   {
+    organizationSlug: "google",
     title: "Software Engineer",
     level: "Mid-level",
     location: "New York, NY",
@@ -56,6 +58,7 @@ export const dataSeedJobs: SeedJob[] = [
     experienceMax: 5,
   },
   {
+    organizationSlug: "facebook",
     title: "Data Scientist",
     level: "Senior",
     location: "San Francisco, CA",
@@ -71,6 +74,7 @@ export const dataSeedJobs: SeedJob[] = [
     experienceMax: 7,
   },
   {
+    organizationSlug: "youtube",
     title: "UI/UX Designer",
     level: "Mid-Level",
     location: "Remote",
@@ -86,6 +90,7 @@ export const dataSeedJobs: SeedJob[] = [
     experienceMax: 4,
   },
   {
+    organizationSlug: "x",
     title: "Product Manager",
     level: "Senior",
     location: "Los Angeles, CA",
@@ -101,6 +106,7 @@ export const dataSeedJobs: SeedJob[] = [
     experienceMax: 7,
   },
   {
+    organizationSlug: "shopify",
     title: "Marketing Specialist",
     level: "Mid-level",
     location: "Chicago, IL",
@@ -114,5 +120,37 @@ export const dataSeedJobs: SeedJob[] = [
       "Develop and execute marketing strategies to drive brand awareness, engagement, and revenue growth.",
     experienceMin: 2,
     experienceMax: 4,
+  },
+  {
+    organizationSlug: "bearmentor",
+    title: "Web Development Mentor",
+    level: "Senior",
+    location: "Indonesia",
+    types: ["Part-time", "Freelance"],
+    salaryCurrency: "IDR",
+    salaryMin: 3_000_000,
+    salaryMax: 5_000_000,
+    salaryPeriod: "month",
+    workplaceTypes: ["Remote"],
+    description:
+      "Guide and support students in their web development journey, providing feedback and resources.",
+    experienceMin: 3,
+    experienceMax: 15,
+  },
+  {
+    organizationSlug: "catamyst",
+    title: "Full Stack Web Developer",
+    level: "Mid-Level",
+    location: "Indonesia",
+    types: ["Part-time", "Contract"],
+    salaryCurrency: "IDR",
+    salaryMin: 6_000_000,
+    salaryMax: 10_000_000,
+    salaryPeriod: "month",
+    workplaceTypes: ["Hybrid", "Remote"],
+    description:
+      "Develop and maintain web applications using modern technologies and frameworks.",
+    experienceMin: 2,
+    experienceMax: 10,
   },
 ];

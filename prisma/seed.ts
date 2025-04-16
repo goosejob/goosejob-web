@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 import { convertToSlug } from "@/lib/string";
-import { dataJobStatusOptions, dataSeedJobs } from "@/modules/job/data";
+import { dataSeedJobStatuses, dataSeedJobs } from "@/modules/job/data";
 import { dataSeedOrganizations } from "@/modules/organization/data";
 
 const prisma = new PrismaClient();
@@ -9,16 +9,16 @@ const prisma = new PrismaClient();
 async function main() {
   // await prisma.job.deleteMany(); // ❌ Uncomment to delete all
 
-  for (const dataJobStatus of dataJobStatusOptions) {
-    const jobStatusUpsertData = {
-      ...dataJobStatus,
-      slug: convertToSlug(dataJobStatus.name),
+  for (const dataSeedJobStatus of dataSeedJobStatuses) {
+    const jobStatusData = {
+      ...dataSeedJobStatus,
+      slug: convertToSlug(dataSeedJobStatus.name),
     };
 
     const upsertedJobStatus = await prisma.jobStatus.upsert({
-      where: { slug: jobStatusUpsertData.slug },
-      update: jobStatusUpsertData,
-      create: jobStatusUpsertData,
+      where: { slug: jobStatusData.slug },
+      update: jobStatusData,
+      create: jobStatusData,
     });
 
     console.log(
@@ -39,19 +39,28 @@ async function main() {
   }
 
   for (const dataSeedJob of dataSeedJobs) {
-    const jobUpsertData = {
-      ...dataSeedJob,
+    const { organizationSlug, ...dataJobRest } = dataSeedJob;
+
+    const jobData = {
+      ...dataJobRest,
       slug: convertToSlug(dataSeedJob.title),
       status: { connect: { slug: "published" } },
+      organization: { connect: { slug: organizationSlug } },
     };
 
-    const upsertedJob = await prisma.job.upsert({
-      where: { slug: jobUpsertData.slug },
-      update: jobUpsertData,
-      create: jobUpsertData,
+    const job = await prisma.job.upsert({
+      where: { slug: jobData.slug },
+      update: jobData,
+      create: jobData,
+      include: {
+        status: true,
+        organization: true,
+      },
     });
 
-    console.log(`💼 Job: ${upsertedJob.title} (${upsertedJob.slug})`);
+    console.log(
+      `💼 Job: ${job.title} (${job.slug}) at ${job.organization.name} is ${job.status.name}`
+    );
   }
 }
 

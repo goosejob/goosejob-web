@@ -17,18 +17,17 @@ model Job {
   id   String @id @default(ulid())
   slug String @unique @db.Text // job-title-company-name-id
 
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  organizationId String?
+  status   JobStatus @relation(fields: [statusId], references: [id])
+  statusId String
+
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
 
   // Quick Details
   title    String   @db.Text
   level    String?
   location String?
   types    String[]
-
-  // Status
-  status   JobStatus @relation(fields: [statusId], references: [id])
-  statusId String
 
   // Salary
   salaryCurrency String? // USD, EUR, CAD, AUD, SGD, IDR, etc
@@ -55,9 +54,9 @@ model Job {
 }
 
 model JobStatus {
-  id String @id @default(ulid())
-
+  id   String @id @default(ulid())
   slug String @unique // draft, published, archived, to-be-deleted
+
   name String @unique // Draft, Published, Archived, To Be Deleted
 
   jobs Job[]
@@ -65,13 +64,14 @@ model JobStatus {
 
 // Organization / Company / School / Employer
 model Organization {
-  id String @id @default(ulid())
-
+  id   String @id @default(ulid())
   slug String @unique @db.Text
 
-  name        String @unique @db.Text
-  tagline     String @default("No tagline") @db.Text
-  description String @default("No detailed description") @db.Text
+  name           String   @unique @db.Text
+  tagline        String   @default("No tagline") @db.Text
+  description    String   @default("No detailed description") @db.Text
+  location       String   @db.Text
+  workplaceTypes String[]
 
   jobs Job[]
 
