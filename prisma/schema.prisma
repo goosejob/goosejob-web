@@ -49,6 +49,8 @@ model Job {
   // Tags
   skills String[]
 
+  originalUrl String? @db.Text
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -72,6 +74,9 @@ model Organization {
   description    String   @default("No detailed description") @db.Text
   location       String   @db.Text
   workplaceTypes String[]
+
+  websiteUrl String? @db.Text
+  logoUrl    String? @db.Text
 
   jobs Job[]
 
