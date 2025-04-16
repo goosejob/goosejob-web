@@ -76,9 +76,9 @@ export function NavLinks({
                     {group.items?.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={item.to}>
+                          <Link to={item.to} prefetch="intent">
                             <span>{item.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
