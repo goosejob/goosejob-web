@@ -1,19 +1,17 @@
-import { redirect } from "react-router";
-import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { prisma } from "@/lib/prisma";
+import { newJobFormSchema } from "@/modules/job/schema";
 import { useForm, type SubmissionResult } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-
 import type { Route } from "./+types/new";
-
-import { prisma } from "@/lib/prisma";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { FormMessage } from "@/components/ui/form";
-import { newJobFormSchema } from "@/modules/job/schema";
 import { convertToSlugNanoId } from "@/lib/string";
+import { redirect } from "react-router";
+import type { z } from "zod";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -37,13 +35,21 @@ export async function action({ request }: Route.ActionArgs) {
   });
   if (submission.status !== "success") return submission.reply();
 
-  const { organizationSlug, ...inputValue } = submission.value;
+  const { organizationSlug, statusSlug, ...inputValue } = submission.value;
 
   const newJob = await prisma.job.create({
     data: {
       ...inputValue,
+      organization: {
+        connect: { slug: organizationSlug },
+      },
+      status: {
+        connect: { slug: statusSlug },
+      },
       slug: convertToSlugNanoId(
-        [organizationSlug, inputValue.title, inputValue.level].join("-")
+        organizationSlug,
+        inputValue.title,
+        inputValue.level
       ),
     },
   });
@@ -59,14 +65,14 @@ export default function Route({
     <>
       <div className="flex flex-wrap lg:flex-nowrap gap-8">
         <div className="w-full max-w-xl space-y-4">
-          <h1>Add New Job</h1>
           <CreateNewJobForm lastResult={actionData} />
         </div>
 
         <div className="space-y-3 w-full max-w-md">
-          <h2>Preview Job Post</h2>
           <Card>
-            <CardContent className="min-h-96"></CardContent>
+            <CardContent className="min-h-96">
+              <span>Preview Here</span>
+            </CardContent>
           </Card>
         </div>
       </div>
@@ -89,7 +95,7 @@ export function CreateNewJobForm({
       organizationSlug: "organization-slug",
       title: "Job Title",
       level: "Job Level",
-      currency: "USD",
+      salaryCurrency: "USD",
       salaryMin: 50_000,
       salaryMax: 100_000,
       experienceMin: 1,
