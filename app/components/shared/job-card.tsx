@@ -29,14 +29,17 @@ export function JobCard({ job }: { job: JobRefined }) {
         </CardTitle>
 
         <CardDescription className="space-y-2">
-          <div className="flex items-center gap-1">
-            <Building2 className="size-4" />
-            <span>{job.organization.name}</span>
+          <div className="inline-flex gap-4">
+            <div className="flex items-center gap-1">
+              <Building2 className="size-4" />
+              <span>{job.organization.name}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <MapPin className="size-4" />
+              <span> {job.location ?? "Unknown"}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <MapPin className="size-4" />
-            <span> {job.location ?? "Unknown"}</span>
-          </div>
+
           <div className="flex items-center gap-1">
             <Wallet className="size-4" />
             <span>{job.salaryCurrency}</span>
