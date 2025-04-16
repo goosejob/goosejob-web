@@ -11,20 +11,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { convertDecimalToCurrency } from "@/lib/currency";
+import { convertToCurrency } from "@/lib/currency";
 import { ButtonLink } from "@/components/ui/button-link";
 import { joinStringsFallback } from "@/lib/string";
 import type { JobWithRelations } from "@/modules/job/type";
 import { Debug } from "@/components/shared/debug";
 
 export function JobCard({ job }: { job: JobWithRelations }) {
-  const salaryMin = convertDecimalToCurrency(job.salaryMin);
-  const salaryMax = convertDecimalToCurrency(job.salaryMax);
+  const salaryMin = convertToCurrency(job.salaryMin?.d);
+  const salaryMax = convertToCurrency(job.salaryMax?.d);
   const salaryPeriod = job.salaryPeriod ?? "year";
 
   return (
     <Card>
-      {/* <Debug>{job}</Debug> */}
       <CardHeader>
         <CardTitle>
           <span>{job.title}</span>

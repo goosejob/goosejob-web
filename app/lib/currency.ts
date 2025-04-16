@@ -1,14 +1,9 @@
-import { Decimal } from "@prisma/client/runtime/library";
+import Decimal from "decimal.js";
 
-export function convertDecimalToCurrency(
-  amount: number | number[] | Decimal | null
+export function convertToCurrency(
+  amount?: number | number[] | null | undefined
 ) {
   if (!amount) return "0";
 
-  // If it's a Prisma Decimal, convert it to a number
-  if (amount instanceof Decimal) {
-    return new Intl.NumberFormat("en-US", {}).format(amount.toNumber());
-  }
-
-  return new Intl.NumberFormat("en-US", {}).format(amount as number);
+  return new Intl.NumberFormat("en-US", {}).format(Number(amount));
 }
