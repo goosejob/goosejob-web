@@ -14,18 +14,7 @@ export type SeedJob = {
   workplaceTypes: string[];
 };
 
-export type SeedJobStatus = {
-  slug: string;
-  name: string;
-};
-
-export const dataJobStatusOptions: SeedJobStatus[] = [
-  { slug: "draft", name: "Draft" },
-  { slug: "published", name: "Published" },
-  { slug: "archived", name: "Archived" },
-];
-
-export const dataJobTypeOptions = [
+export const defaultJobTypeOptions = [
   { value: "full-time", label: "Full-time" },
   { value: "part-time", label: "Part-time" },
   { value: "contract", label: "Contract" },
@@ -33,7 +22,7 @@ export const dataJobTypeOptions = [
   { value: "internship", label: "Internship" },
 ];
 
-export const dataWorkplaceTypeOptions = [
+export const defaultWorkplaceTypeOptions = [
   { value: "remote", label: "Remote" },
   { value: "onsite", label: "On-site" },
   { value: "hybrid", label: "Hybrid" },

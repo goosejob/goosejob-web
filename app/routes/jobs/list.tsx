@@ -15,7 +15,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader() {
-  const jobs = await prisma.job.findMany();
+  const jobs = await prisma.job.findMany({
+    where: { status: { slug: "published" } },
+  });
 
   return { jobs };
 }

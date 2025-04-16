@@ -15,7 +15,10 @@ generator client {
 
 model Job {
   id   String @id @default(ulid())
-  slug String @unique @db.Text
+  slug String @unique @db.Text // job-title-company-name-id
+
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
 
   // Quick Details
   title    String   @db.Text
@@ -23,11 +26,15 @@ model Job {
   location String?
   types    String[]
 
+  // Status
+  status   JobStatus @relation(fields: [statusId], references: [id])
+  statusId String
+
   // Salary
-  salaryCurrency String?
+  salaryCurrency String? // USD, EUR, CAD, AUD, SGD, IDR, etc
   salaryMin      Decimal? @db.Money
   salaryMax      Decimal? @db.Money
-  salaryPeriod   String?
+  salaryPeriod   String? // hourly, daily, weekly, monthly, yearly
 
   // Experience
   experienceMin Int?
@@ -42,6 +49,31 @@ model Job {
 
   // Tags
   skills String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobStatus {
+  id String @id @default(ulid())
+
+  slug String @unique // draft, published, archived, to-be-deleted
+  name String @unique // Draft, Published, Archived, To Be Deleted
+
+  jobs Job[]
+}
+
+// Organization / Company / School / Employer
+model Organization {
+  id String @id @default(ulid())
+
+  slug String @unique @db.Text
+
+  name        String @unique @db.Text
+  tagline     String @default("No tagline") @db.Text
+  description String @default("No detailed description") @db.Text
+
+  jobs Job[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -69,5 +69,6 @@ bun run build
 
 ## References
 
-- Remote OK
-- <https://repoboard.org>
+- Remote OK: <https://remoteok.com>
+- JOBS by Developer Kaki: <https://jobs.developerkaki.my>
+- Repo Board: <https://repoboard.org>
