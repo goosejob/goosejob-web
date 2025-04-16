@@ -1,8 +1,9 @@
 import type { Route } from "./+types/list";
-import type { JobWithRelations } from "@/modules/job/type";
+import type { JobRefined, JobWithRelations } from "@/modules/job/type";
 
 import { JobCard } from "@/components/shared/job-card";
 import { prisma } from "@/lib/prisma";
+import { refineJobs } from "@/modules/job/util";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,7 +21,7 @@ export async function loader() {
     include: { status: true, organization: true },
   });
 
-  return { jobs };
+  return { jobs: refineJobs(jobs) };
 }
 
 export default function Route({ loaderData }: Route.ComponentProps) {
@@ -30,7 +31,7 @@ export default function Route({ loaderData }: Route.ComponentProps) {
     <>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         {jobs.map((job, index) => (
-          <JobCard key={index} job={job as JobWithRelations} />
+          <JobCard key={index} job={job} />
         ))}
       </div>
     </>
