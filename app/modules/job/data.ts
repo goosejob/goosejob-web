@@ -1,5 +1,5 @@
 export type SeedJob = {
-  organizationSlug?: string;
+  organizationSlug: string;
   slug?: string;
   title: string;
   description: string;

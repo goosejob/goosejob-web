@@ -2,12 +2,14 @@ import { customAlphabet } from "nanoid";
 import pluralize from "pluralize";
 import slugify from "slugify";
 
-export function convertToSlug(text: string) {
-  return slugify(text, { lower: true });
+export function convertToSlug(...texts: string[]) {
+  const textToSlug = texts.join(" ");
+  return slugify(textToSlug, { lower: true });
 }
 
-export function convertToSlugNanoId(text: string) {
-  return slugify(`${text}-${createNanoId()}`, { lower: true });
+export function convertToSlugNanoId(...texts: string[]) {
+  const textToSlug = texts.join(" ");
+  return slugify(`${textToSlug}-${createNanoId()}`, { lower: true });
 }
 
 export function isValidUrl(url: string) {

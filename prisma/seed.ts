@@ -43,10 +43,11 @@ async function main() {
 
     const jobData = {
       ...dataJobRest,
-      slug: convertToSlug(dataSeedJob.title),
+      slug: convertToSlug(organizationSlug, dataSeedJob.title),
       status: { connect: { slug: "published" } },
       organization: { connect: { slug: organizationSlug } },
     };
+    // NOTE: If not for seeding, we'll use convertToSlugNanoId to generate a guaranteed unique slug
 
     const job = await prisma.job.upsert({
       where: { slug: jobData.slug },
