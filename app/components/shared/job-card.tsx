@@ -1,4 +1,4 @@
-import type { Job } from "@prisma/client";
+import type { Job } from "@/generated/prisma";
 import { MapPin, Wallet, Building2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

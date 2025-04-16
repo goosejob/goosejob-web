@@ -1,13 +1,10 @@
-.env
+__*
 .dev.vars
 .DS_Store
-/node_modules/
-
-# React Router
-/.react-router/
-/build/
-
-# Cloudflare
+.env
 .mf
 .wrangler
-__*
+/.react-router/
+/build/
+/node_modules/
+generated/

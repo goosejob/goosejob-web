@@ -1,4 +1,4 @@
-import type { Prisma, Job } from "@prisma/client";
+import type { Prisma, Job } from "@/generated/prisma";
 import type { Decimal } from "@prisma/client/runtime/library";
 
 // Override the Decimal type in Job to use the correct Decimal type
