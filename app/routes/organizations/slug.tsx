@@ -43,6 +43,7 @@ export default function OrganizationSlugRoute({
   loaderData,
 }: Route.ComponentProps) {
   const { organization } = loaderData;
+  const hasJobs = organization.jobs.length > 0;
 
   return (
     <div className="container max-w-4xl">
@@ -95,7 +96,16 @@ export default function OrganizationSlugRoute({
             </div>
           )}
 
-          {organization.jobs.length > 0 && (
+          {!hasJobs && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-medium">No Open Positions</h3>
+              <Card className="text-muted-foreground text-xs">
+                This organization currently has no open positions.
+              </Card>
+            </div>
+          )}
+
+          {hasJobs && (
             <div className="space-y-4">
               <h3 className="text-lg font-medium">Open Positions</h3>
               <div className="grid gap-4">

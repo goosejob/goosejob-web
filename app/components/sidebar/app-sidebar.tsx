@@ -1,19 +1,13 @@
 import * as React from "react";
 import {
-  IconCamera,
   IconChartBar,
   IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
   IconHelp,
-  IconListDetails,
-  IconReport,
   IconSearch,
   IconSettings,
   IconUsers,
+  IconBriefcase,
+  IconBuilding,
 } from "@tabler/icons-react";
 
 import { NavMain } from "@/components/sidebar/nav-main";
@@ -43,6 +37,16 @@ const data = {
       icon: IconDashboard,
     },
     {
+      title: "Jobs",
+      url: "/jobs",
+      icon: IconBriefcase,
+    },
+    {
+      title: "Organizations",
+      url: "/organizations",
+      icon: IconBuilding,
+    },
+    {
       title: "Analytics",
       url: "/",
       icon: IconChartBar,
@@ -54,6 +58,11 @@ const data = {
     },
   ],
   navSecondary: [
+    {
+      title: "Post a Job",
+      url: "/post-a-job",
+      icon: IconBriefcase,
+    },
     {
       title: "Settings",
       url: "/settings",
