@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { Organization } from "@prisma/client";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -97,7 +98,11 @@ export function CreateNewJobForm({
   organizations,
 }: {
   lastResult: SubmissionResult<string[]> | undefined;
-  organizations: Awaited<ReturnType<typeof loader>>["organizations"];
+  organizations: {
+    name: string;
+    slug: string;
+    logoUrl: string | null;
+  }[];
 }) {
   const [form, fields] = useForm<z.infer<typeof newJobFormSchema>>({
     shouldValidate: "onBlur",
