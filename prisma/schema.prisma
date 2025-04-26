@@ -13,6 +13,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator zod {
+  provider = "zod-prisma-types"
+}
+
 model Job {
   id   String @id @default(ulid())
   slug String @unique @db.Text // job-title-company-name-id

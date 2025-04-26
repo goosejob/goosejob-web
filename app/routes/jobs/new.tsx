@@ -5,13 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { prisma } from "@/lib/prisma";
+import { convertToSlugNanoId } from "@/lib/string";
 import { newJobFormSchema } from "@/modules/job/schema";
 import { useForm, type SubmissionResult } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import type { Route } from "./+types/new";
-import { convertToSlugNanoId } from "@/lib/string";
 import { redirect } from "react-router";
 import type { z } from "zod";
+import type { Route } from "./+types/new";
 
 export function meta({}: Route.MetaArgs) {
   return [

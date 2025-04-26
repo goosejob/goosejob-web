@@ -21,7 +21,8 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./app/*"],
+      "~prisma/*": ["./prisma/*"]
     }
   }
 }
