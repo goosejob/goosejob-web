@@ -33,17 +33,17 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/",
+      url: href("/"),
       icon: IconDashboard,
     },
     {
       title: "Jobs",
-      url: "/jobs",
+      url: href("/jobs"),
       icon: IconBriefcase,
     },
     {
       title: "Organizations",
-      url: "/organizations",
+      url: href("/organizations"),
       icon: IconBuilding,
     },
     {
@@ -60,7 +60,12 @@ const data = {
   navSecondary: [
     {
       title: "Post a Job",
-      url: "/post-a-job",
+      url: href("/post-a-job"),
+      icon: IconBriefcase,
+    },
+    {
+      title: "Setup an Organization",
+      url: href("/setup/organization"),
       icon: IconBriefcase,
     },
     {

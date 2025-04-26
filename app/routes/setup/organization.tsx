@@ -72,7 +72,8 @@ export default function OrganizationsNewRoute({
         <CardHeader>
           <CardTitle>Create New Organization</CardTitle>
           <CardDescription>
-            Fill in the details about your organization to get started.
+            Setup a new organization before posting a job. Let's fill in the
+            details.
           </CardDescription>
         </CardHeader>
         <CardContent>
