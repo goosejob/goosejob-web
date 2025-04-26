@@ -78,11 +78,7 @@ export function OrganizationSwitcher({
             <DropdownMenuSeparator />
 
             <DropdownMenuItem asChild>
-              <Link
-                to={href("/setup/organization")}
-                prefetch="intent"
-                className="flex gap-2 p-2"
-              >
+              <Link to={href("/setup/organization")} className="flex gap-2 p-2">
                 <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                   <Plus className="size-4" />
                 </div>

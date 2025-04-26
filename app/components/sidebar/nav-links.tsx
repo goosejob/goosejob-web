@@ -44,7 +44,7 @@ export function NavLinks({
             return (
               <SidebarMenuItem key={group.title}>
                 <SidebarMenuButton asChild tooltip={group.title}>
-                  <Link to={group.to} prefetch="intent">
+                  <Link to={group.to}>
                     {group.icon && <group.icon />}
                     <span className="font-medium">{group.title}</span>
                   </Link>
@@ -63,7 +63,7 @@ export function NavLinks({
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton asChild tooltip={group.title}>
-                    <Link to={group.to} prefetch="intent">
+                    <Link to={group.to}>
                       {group.icon && <group.icon />}
                       <span className="font-medium">{group.title}</span>
                       <ChevronRight className="ml-auto transition-transform duration-100 group-data-[state=open]/collapsible:rotate-90" />
@@ -76,7 +76,7 @@ export function NavLinks({
                     {group.items?.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild>
-                          <Link to={item.to} prefetch="intent">
+                          <Link to={item.to}>
                             <span>{item.title}</span>
                           </Link>
                         </SidebarMenuSubButton>
