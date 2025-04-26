@@ -7,30 +7,30 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { href, Link } from "react-router";
+import { Link } from "react-router";
 
 export function CreateNewDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="flex gap-2">
-          <span>New</span>
+          <span>Create</span>
           <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-[180px] p-1">
+      <DropdownMenuContent align="end" className="p-1">
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to={href("/post-a-job")}>
+          <Link to={"/post-a-job"}>
             <Briefcase className="size-4" />
-            <span>New Job</span>
+            <span>Create New Job</span>
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to={href("/setup/organization")}>
+          <Link to={"/setup/organization"}>
             <Building2 className="size-4" />
-            <span>New Organization</span>
+            <span>Create New Organization</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

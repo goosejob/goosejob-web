@@ -1,8 +1,4 @@
-import type { Route } from "./+types/organization";
-import { Form, href, redirect, useNavigation } from "react-router";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,13 +6,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { prisma } from "@/lib/prisma";
-import { getZodConstraint, parseWithZod } from "@conform-to/zod";
-import { NewOrganizationSchema } from "@/modules/organization/schema";
-import { convertToSlugNanoId } from "@/lib/string";
-import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { prisma } from "@/lib/prisma";
+import { convertToSlugNanoId } from "@/lib/string";
+import { NewOrganizationSchema } from "@/modules/organization/schema";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { getZodConstraint, parseWithZod } from "@conform-to/zod";
+import { Form, href, redirect, useNavigation } from "react-router";
+import type { Route } from "./+types/organization";
 
 export function meta({}: Route.MetaArgs) {
   return [
