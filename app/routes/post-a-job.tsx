@@ -11,7 +11,7 @@ import { useForm, type SubmissionResult } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "react-router";
 import type { z } from "zod";
-import type { Route } from "./+types/new";
+import type { Route } from "./+types/post-a-job";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -24,7 +24,6 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function loader({ request }: Route.ActionArgs) {
-  // TODO: Check user later
   const count = await prisma.job.count();
   return { count };
 }
@@ -40,12 +39,8 @@ export async function action({ request }: Route.ActionArgs) {
   const newJob = await prisma.job.create({
     data: {
       ...inputValue,
-      organization: {
-        connect: { slug: organizationSlug },
-      },
-      status: {
-        connect: { slug: statusSlug },
-      },
+      organization: { connect: { slug: organizationSlug } },
+      status: { connect: { slug: statusSlug } },
       slug: convertToSlugNanoId(
         organizationSlug,
         inputValue.title,
