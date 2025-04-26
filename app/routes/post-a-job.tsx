@@ -9,7 +9,7 @@ import { convertToSlugNanoId } from "@/lib/string";
 import { newJobFormSchema } from "@/modules/job/schema";
 import { useForm, type SubmissionResult } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { redirect } from "react-router";
+import { href, redirect } from "react-router";
 import type { z } from "zod";
 import type { Route } from "./+types/post-a-job";
 
@@ -49,7 +49,7 @@ export async function action({ request }: Route.ActionArgs) {
     },
   });
 
-  return redirect(`/jobs/${newJob.slug}`);
+  return redirect(href("/jobs/:slug", { slug: newJob.slug }));
 }
 
 export default function Route({

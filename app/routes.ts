@@ -18,6 +18,7 @@ export default [
     route("/jobs/canceled", "routes/jobs/canceled.tsx"),
 
     route("/organizations", "routes/organizations/list.tsx"),
+    route("/organizations/:slug", "routes/organizations/slug.tsx"),
 
     route("/search", "routes/search/result.tsx"),
 

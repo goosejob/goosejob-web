@@ -67,7 +67,7 @@ export function JobCard({ job }: { job: JobRefined }) {
       </CardContent>
 
       <CardFooter>
-        <ButtonLink to={href(`/jobs/:slug`, { slug: job.slug })}>
+        <ButtonLink to={href("/jobs/:slug", { slug: job.slug })}>
           See Details
         </ButtonLink>
         <Button variant="secondary">Quick Apply</Button>

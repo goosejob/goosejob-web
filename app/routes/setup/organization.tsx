@@ -1,5 +1,5 @@
 import type { Route } from "./+types/organization";
-import { Form, redirect, useNavigation } from "react-router";
+import { Form, href, redirect, useNavigation } from "react-router";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,7 +41,7 @@ export async function action({ request }: Route.ActionArgs) {
       },
     });
 
-    return redirect(`/organizations/${organization.slug}`);
+    return redirect(href("/organizations/:slug", { slug: organization.slug }));
   } catch (error) {
     console.error(error);
     return submission.reply({

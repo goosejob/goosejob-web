@@ -62,9 +62,7 @@ model Job {
 model JobStatus {
   id   String @id @default(ulid())
   slug String @unique // draft, published, archived, to-be-deleted
-
   name String @unique // Draft, Published, Archived, To Be Deleted
-
   jobs Job[]
 }
 
