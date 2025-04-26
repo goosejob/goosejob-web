@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ChevronsUpDown, Plus } from "lucide-react";
-import { Link } from "react-router";
+import { href, Link } from "react-router";
 
 import {
   DropdownMenu,
@@ -79,7 +79,7 @@ export function OrganizationSwitcher({
 
             <DropdownMenuItem asChild>
               <Link
-                to="/organizations/new"
+                to={href("/setup/organization")}
                 prefetch="intent"
                 className="flex gap-2 p-2"
               >

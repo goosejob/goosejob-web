@@ -14,6 +14,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { joinStringsFallback } from "@/lib/string";
 import type { JobRefined } from "@/modules/job/type";
 import { convertToCurrency } from "@/lib/currency";
+import { href } from "react-router";
 
 export function JobCard({ job }: { job: JobRefined }) {
   const salaryMin = convertToCurrency(job.salaryMin);
@@ -66,7 +67,9 @@ export function JobCard({ job }: { job: JobRefined }) {
       </CardContent>
 
       <CardFooter>
-        <ButtonLink to={`/jobs/${job.slug}`}>See Details</ButtonLink>
+        <ButtonLink to={href(`/jobs/:slug`, { slug: job.slug })}>
+          See Details
+        </ButtonLink>
         <Button variant="secondary">Quick Apply</Button>
       </CardFooter>
     </Card>

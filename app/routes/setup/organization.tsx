@@ -1,4 +1,4 @@
-import type { Route } from "./+types/new";
+import type { Route } from "./+types/organization";
 import { Form, redirect, useNavigation } from "react-router";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,6 +43,7 @@ export async function action({ request }: Route.ActionArgs) {
 
     return redirect(`/organizations/${organization.slug}`);
   } catch (error) {
+    console.error(error);
     return submission.reply({
       formErrors: ["Failed to create organization. Please try again."],
     });

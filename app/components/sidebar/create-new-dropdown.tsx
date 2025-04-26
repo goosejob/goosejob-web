@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { href, Link } from "react-router";
 
 export function CreateNewDropdown() {
   return (
@@ -21,14 +21,14 @@ export function CreateNewDropdown() {
 
       <DropdownMenuContent align="end" className="w-[180px] p-1">
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to="/jobs/new" prefetch="intent">
+          <Link to={href("/jobs/new")} prefetch="intent">
             <Briefcase className="size-4" />
             <span>New Job</span>
           </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild className="flex items-center gap-2 py-1.5">
-          <Link to="/organizations/new" prefetch="intent">
+          <Link to={href("/setup/organization")} prefetch="intent">
             <Building2 className="size-4" />
             <span>New Organization</span>
           </Link>

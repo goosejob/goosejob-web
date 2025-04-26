@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
+import { href, Link } from "react-router";
 
 export function NavMain({
   items,
@@ -28,7 +28,7 @@ export function NavMain({
               tooltip="Quick Create"
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
             >
-              <Link to="/jobs/new">
+              <Link to={href("/jobs/new")}>
                 <IconCirclePlusFilled />
                 <span>Quick Create</span>
               </Link>
