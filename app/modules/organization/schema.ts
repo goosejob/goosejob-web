@@ -1,4 +1,4 @@
-import { OrganizationSchema as GeneratedOrganizationSchema } from "../../../prisma/generated/zod";
+import { OrganizationSchema as GeneratedOrganizationSchema } from "@/generated/zod";
 import { z } from "zod";
 
 export const OrganizationSchema = GeneratedOrganizationSchema.extend({
