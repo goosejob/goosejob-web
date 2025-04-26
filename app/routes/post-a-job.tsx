@@ -12,6 +12,13 @@ import { parseWithZod } from "@conform-to/zod";
 import { href, redirect } from "react-router";
 import type { z } from "zod";
 import type { Route } from "./+types/post-a-job";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,7 +32,14 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({ request }: Route.ActionArgs) {
   const count = await prisma.job.count();
-  return { count };
+  const organizations = await prisma.organization.findMany({
+    select: {
+      slug: true,
+      name: true,
+      logoUrl: true,
+    },
+  });
+  return { count, organizations };
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -60,7 +74,10 @@ export default function Route({
     <>
       <div className="flex flex-wrap lg:flex-nowrap gap-8">
         <div className="w-full max-w-xl space-y-4">
-          <CreateNewJobForm lastResult={actionData} />
+          <CreateNewJobForm
+            lastResult={actionData}
+            organizations={loaderData.organizations}
+          />
         </div>
 
         <div className="space-y-3 w-full max-w-md">
@@ -77,8 +94,10 @@ export default function Route({
 
 export function CreateNewJobForm({
   lastResult,
+  organizations,
 }: {
   lastResult: SubmissionResult<string[]> | undefined;
+  organizations: Awaited<ReturnType<typeof loader>>["organizations"];
 }) {
   const [form, fields] = useForm<z.infer<typeof newJobFormSchema>>({
     shouldValidate: "onBlur",
@@ -87,7 +106,7 @@ export function CreateNewJobForm({
       return parseWithZod(formData, { schema: newJobFormSchema });
     },
     defaultValue: {
-      organizationSlug: "organization-slug",
+      organizationSlug: organizations[0]?.slug ?? "",
       title: "Job Title",
       level: "Job Level",
       salaryCurrency: "USD",
@@ -104,6 +123,10 @@ export function CreateNewJobForm({
     },
   });
 
+  const selectedOrganization = organizations.find(
+    (org) => org.slug === fields.organizationSlug.value
+  );
+
   return (
     <form
       method="post"
@@ -114,18 +137,30 @@ export function CreateNewJobForm({
       <div>
         <Label>Organization / Company / School</Label>
         <div className="flex gap-2 items-center">
-          <Input
+          <Select
             name={fields.organizationSlug.name}
             defaultValue={fields.organizationSlug.initialValue}
-            placeholder="organization-slug"
-          />
-          <div className="aspect-square">
-            <img
-              src="https://lh3.googleusercontent.com/kKaWGqBLttri7RicHIgIiroIE3ufOjGdcEckhMKji4BlT_jlEYxUwUFtFrCoFqHqJE9f6DgFTSrTh4Tz3ykcoW56P_ZuDmC_IUu8LSFY7JzkpE4Ul0FD"
-              alt="Organization Logo"
-              className="object-contain size-10 bg-muted rounded"
-            />
-          </div>
+          >
+            <SelectTrigger className="flex-1">
+              <SelectValue placeholder="Select an organization" />
+            </SelectTrigger>
+            <SelectContent>
+              {organizations.map((org) => (
+                <SelectItem key={org.slug} value={org.slug}>
+                  <div className="flex items-center gap-2">
+                    {org.logoUrl && (
+                      <img
+                        src={org.logoUrl}
+                        alt={`${org.name} Logo`}
+                        className="object-contain size-5 rounded"
+                      />
+                    )}
+                    <span>{org.name}</span>
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         {fields.organizationSlug.errors && (
           <FormMessage>{fields.organizationSlug.errors}</FormMessage>
