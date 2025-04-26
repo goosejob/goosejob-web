@@ -62,12 +62,15 @@ export default function OrganizationSlugRoute({
               <CardDescription>{organization.tagline}</CardDescription>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {organization.workplaceTypes.map((type) => (
-              <Badge key={type} variant="secondary">
-                {type}
-              </Badge>
-            ))}
+          <div className="space-y-2">
+            <p className="text-xs">Workplace Types</p>
+            <div className="flex flex-wrap gap-2">
+              {organization.workplaceTypes.map((type) => (
+                <Badge key={type} variant="secondary">
+                  {type}
+                </Badge>
+              ))}
+            </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -99,7 +102,7 @@ export default function OrganizationSlugRoute({
           {!hasJobs && (
             <div className="space-y-4">
               <h3 className="text-lg font-medium">No Open Positions</h3>
-              <Card className="text-muted-foreground text-xs">
+              <Card className="text-muted-foreground p-3 text-xs">
                 This organization currently has no open positions.
               </Card>
             </div>

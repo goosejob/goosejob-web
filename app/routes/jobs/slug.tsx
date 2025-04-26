@@ -6,7 +6,7 @@ import { convertToCurrency } from "@/lib/currency";
 import { formatDate, formatRelativeDateTime } from "@/lib/datetime";
 import { prisma } from "@/lib/prisma";
 import { refineJobs } from "@/modules/job/util";
-import { Building2, Clock, Globe, MapPin, Wallet } from "lucide-react";
+import { Building2, Clock, GlobeIcon, MapPinIcon, Wallet } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Route } from "./+types/slug";
 
@@ -65,7 +65,7 @@ export default function Route({ loaderData }: Route.ComponentProps) {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="size-5" />
+                  <MapPinIcon className="size-5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Location</p>
                     <p className="font-medium">{job.location ?? "Remote"}</p>
@@ -174,7 +174,7 @@ export default function Route({ loaderData }: Route.ComponentProps) {
 
               {job.organization.websiteUrl && (
                 <div className="flex items-center gap-2 text-sm">
-                  <Globe className="size-4" />
+                  <GlobeIcon className="size-4" />
                   <a
                     href={job.organization.websiteUrl}
                     target="_blank"

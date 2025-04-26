@@ -1,4 +1,4 @@
-import { MapPin, Wallet, Building2 } from "lucide-react";
+import { MapPinIcon, Wallet, Building2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,7 +36,7 @@ export function JobCard({ job }: { job: JobRefined }) {
               <span>{job.organization.name}</span>
             </div>
             <div className="flex items-center gap-1">
-              <MapPin className="size-4" />
+              <MapPinIcon className="size-4" />
               <span> {job.location ?? "Unknown"}</span>
             </div>
           </div>
